@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
 // Inicialização do Google GenAI SDK com a chave injetada pelo ambiente e telemetria
 const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
+  apiKey: process.env.GEMINI_API_KEY || '',
   httpOptions: {
     headers: {
       'User-Agent': 'aistudio-build',
@@ -31,6 +31,13 @@ const ai = new GoogleGenAI({
 // Rota de Análise Facial por IA Biométrica de Alta Fidelidade
 app.post('/api/analyze-skin', async (req, res) => {
   try {
+    if (!process.env.GEMINI_API_KEY) {
+      return res.status(503).json({
+        success: false,
+        error: 'A chave GEMINI_API_KEY não foi configurada nas Variáveis de Ambiente do Railway.',
+      });
+    }
+
     const { imageBase64, mimeType = 'image/jpeg', userFocus = 'Rejuvenescimento, Linhas Finas e Viço Dérmico' } = req.body;
 
     if (!imageBase64) {
@@ -261,12 +268,15 @@ app.use(express.static(__dirname));
 
 // Inicialização do servidor com suporte híbrido (Vite middleware no Dev, Static no Prod)
 async function startServer() {
-  if (process.env.NODE_ENV === 'production') {
+  const distExists = fs.existsSync(path.resolve(__dirname, 'dist', 'index.html'));
+  if (process.env.NODE_ENV === 'production' || distExists) {
+    console.log('[PRODUÇÃO] Servindo build estático otimizado de dist/');
     app.use(express.static(path.resolve(__dirname, 'dist')));
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
     });
   } else {
+    console.log('[DESENVOLVIMENTO] Iniciando Vite dev middleware...');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',
