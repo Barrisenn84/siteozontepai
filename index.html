@@ -100,28 +100,167 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Glassmorphism Awwwards Grade */
-    .glass-ultra {
-      background: rgba(6, 19, 36, 0.72);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(0, 229, 190, 0.16);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    /* =============================================================
+       SISTEMA DE DESIGN LIQUID GLASS (VIDRO LÍQUIDO TRANSLÚCIDO E FLUIDO)
+       Refração óptica dinâmica, dispersão prismática e resposta tátil
+       ============================================================= */
+    :root {
+      --bg-void: #030810;
+      --cyan-neon: #00E5BE;
+      --gold-royal: #C5A059;
+      --liquid-x: 50%;
+      --liquid-y: 50%;
+      --liquid-refract-angle: 135deg;
+      --liquid-intensity: 1;
     }
 
+    /* Placa Base Liquid Glass: translucidez profunda com dispersão prismática */
+    .liquid-glass,
+    .glass-ultra,
+    .liquid-glass-card {
+      position: relative;
+      background: radial-gradient(
+        130% 130% at var(--liquid-x, 50%) var(--liquid-y, 50%),
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(6, 19, 36, 0.72) 40%,
+        rgba(3, 8, 16, 0.88) 100%
+      );
+      backdrop-filter: blur(28px) saturate(190%) contrast(106%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(106%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 1.25rem;
+      box-shadow:
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.42),
+        inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.65),
+        inset 1.5px 0 2px 0 rgba(0, 229, 190, 0.22),
+        inset -1.5px 0 2px 0 rgba(197, 160, 89, 0.16),
+        0 24px 60px -12px rgba(0, 0, 0, 0.75),
+        0 0 35px -5px rgba(0, 229, 190, 0.12);
+      overflow: hidden;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, background;
+    }
+
+    /* Refração Especular Dinâmica e Fluida (Luz refletida no corpo do vidro líquido) */
+    .liquid-glass::before,
+    .glass-ultra::before,
+    .liquid-glass-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: radial-gradient(
+        circle 340px at var(--liquid-x, 50%) var(--liquid-y, 50%),
+        rgba(255, 255, 255, 0.26) 0%,
+        rgba(0, 229, 190, 0.16) 32%,
+        rgba(197, 160, 89, 0.08) 58%,
+        transparent 78%
+      );
+      opacity: 0.85;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.35s ease;
+    }
+
+    /* Borda Prismática Refrativa (Dispersão de Luz nas extremidades do vidro) */
+    .liquid-glass::after,
+    .glass-ultra::after,
+    .liquid-glass-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        var(--liquid-refract-angle, 135deg),
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(0, 229, 190, 0.4) 28%,
+        rgba(255, 255, 255, 0.06) 50%,
+        rgba(197, 160, 89, 0.45) 75%,
+        rgba(0, 229, 190, 0.65) 100%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.75;
+      transition: opacity 0.35s ease;
+    }
+
+    /* Estados interativos com resposta tátil elástica */
+    .liquid-glass:hover,
+    .glass-ultra:hover,
+    .liquid-glass-card:hover {
+      border-color: rgba(0, 229, 190, 0.4);
+      box-shadow:
+        inset 0 2px 2px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -2px 2px 0 rgba(0, 0, 0, 0.65),
+        inset 2px 0 3px 0 rgba(0, 229, 190, 0.4),
+        0 32px 75px -15px rgba(0, 0, 0, 0.82),
+        0 0 50px -5px rgba(0, 229, 190, 0.25);
+    }
+
+    .liquid-glass:active,
+    .liquid-glass-card:active {
+      transform: scale(0.985);
+      transition-duration: 0.1s;
+    }
+
+    /* Variante Liquid Glass Sutil para elementos secundários */
     .glass-subtle {
-      background: rgba(9, 29, 54, 0.5);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      background: radial-gradient(
+        140% 140% at var(--liquid-x, 50%) var(--liquid-y, 50%),
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(9, 29, 54, 0.55) 50%,
+        rgba(6, 19, 36, 0.75) 100%
+      );
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow:
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+        0 16px 40px -10px rgba(0, 0, 0, 0.5);
     }
 
+    /* Variante Liquid Glass Ouro Real para frascos e itens nobres */
     .glass-gold {
-      background: rgba(22, 18, 12, 0.75);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(197, 160, 89, 0.3);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+      background: radial-gradient(
+        130% 130% at var(--liquid-x, 50%) var(--liquid-y, 50%),
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(28, 22, 14, 0.78) 45%,
+        rgba(14, 10, 6, 0.9) 100%
+      );
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid rgba(197, 160, 89, 0.38);
+      box-shadow:
+        inset 0 1.5px 2px 0 rgba(230, 201, 138, 0.5),
+        inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.7),
+        inset 1.5px 0 2px 0 rgba(197, 160, 89, 0.3),
+        0 24px 60px -10px rgba(0, 0, 0, 0.75),
+        0 0 35px -5px rgba(197, 160, 89, 0.22);
+    }
+
+    /* Onda de Toque Fluida (Liquid Touch Ripple) */
+    .liquid-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(0, 229, 190, 0.35) 45%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0);
+      animation: liquidRippleAnim 0.7s cubic-bezier(0.12, 0.8, 0.22, 1) forwards;
+      z-index: 15;
+    }
+
+    @keyframes liquidRippleAnim {
+      to {
+        transform: translate(-50%, -50%) scale(4.5);
+        opacity: 0;
+      }
     }
 
     /* Magnetic Custom Cursor */
@@ -2523,9 +2662,13 @@
         targetY = (e.clientY - window.innerHeight / 2) * 0.0012;
       });
 
-      // Animação Contínua com Pulsação Bioativa e Efeito Respiração + Bloom Dinâmico
+      // Animação Contínua com Pulsação Bioativa e Efeito Respiração + Bloom Dinâmico (Com pausa inteligente em background)
+      let isTabVisible = !document.hidden;
+      let animFrameId = null;
+
       function renderThree() {
-        requestAnimationFrame(renderThree);
+        if (!isTabVisible) return;
+        animFrameId = requestAnimationFrame(renderThree);
 
         mouseX += (targetX - mouseX) * 0.05;
         mouseY += (targetY - mouseY) * 0.05;
@@ -2578,6 +2721,16 @@
         }
       }
       renderThree();
+
+      // Economia de bateria e GPU: pausa render quando o usuário troca de aba
+      document.addEventListener('visibilitychange', () => {
+        isTabVisible = !document.hidden;
+        if (isTabVisible) {
+          renderThree();
+        } else if (animFrameId) {
+          cancelAnimationFrame(animFrameId);
+        }
+      });
 
       // Responsividade do Canvas e do Composer
       window.addEventListener('resize', () => {
@@ -2773,54 +2926,140 @@
     });
 
     /* -------------------------------------------------------------
-       5. FÍSICA 3D TILT NOS CARDS + GIROSCÓPIO MOBILE
+       5. MOTOR DE FÍSICA E REFRAÇÃO DINÂMICA LIQUID GLASS
+          Desktop (Mouse), Touch Mobile e Giroscópio Físico
        ------------------------------------------------------------- */
-    const tiltCards = document.querySelectorAll('.tilt-wrapper');
-    tiltCards.forEach((wrapper) => {
-      const card = wrapper.querySelector('.tilt-card');
+    const liquidGlassElements = document.querySelectorAll('.liquid-glass, .glass-ultra, .liquid-glass-card, .tilt-card, .glass-gold');
+    const tiltWrappers = document.querySelectorAll('.tilt-wrapper');
+
+    // Função utilitária para aplicar refração líquida em um elemento
+    function updateLiquidRefraction(el, clientX, clientY, rect) {
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      const pctX = Math.round((x / rect.width) * 100);
+      const pctY = Math.round((y / rect.height) * 100);
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const deltaX = x - centerX;
+      const deltaY = y - centerY;
+      const angle = Math.round((Math.atan2(deltaY, deltaX) * 180) / Math.PI + 180);
+
+      el.style.setProperty('--liquid-x', `${pctX}%`);
+      el.style.setProperty('--liquid-y', `${pctY}%`);
+      el.style.setProperty('--liquid-refract-angle', `${angle}deg`);
+    }
+
+    // Criação de onda fluida e viscosa ao clique/toque (Liquid Ripple)
+    function triggerLiquidRipple(e, targetEl) {
+      const rect = targetEl.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      const ripple = document.createElement('span');
+      ripple.className = 'liquid-ripple';
+      ripple.style.left = `${clientX - rect.left}px`;
+      ripple.style.top = `${clientY - rect.top}px`;
+      targetEl.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 750);
+    }
+
+    // Interações de Mouse no Desktop
+    tiltWrappers.forEach((wrapper) => {
+      const card = wrapper.querySelector('.tilt-card') || wrapper;
       const glare = wrapper.querySelector('.specular-glare');
-      if (!card) return;
 
       wrapper.addEventListener('mousemove', (e) => {
         if (isTouch) return;
         const rect = wrapper.getBoundingClientRect();
+        updateLiquidRefraction(card, e.clientX, e.clientY, rect);
+
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotX = ((y - centerY) / centerY) * -12;
-        const rotY = ((x - centerX) / centerX) * 12;
+        const rotX = ((y - centerY) / centerY) * -11;
+        const rotY = ((x - centerX) / centerX) * 11;
 
         card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
 
         if (glare) {
           glare.style.opacity = '1';
-          glare.style.background = `radial-gradient(circle 280px at ${x}px ${y}px, rgba(0, 229, 190, 0.32), transparent 70%)`;
+          glare.style.background = `radial-gradient(circle 300px at ${x}px ${y}px, rgba(0, 229, 190, 0.35), transparent 70%)`;
         }
       });
 
       wrapper.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        if (glare) {
-          glare.style.opacity = '0';
-        }
+        card.style.setProperty('--liquid-x', '50%');
+        card.style.setProperty('--liquid-y', '50%');
+        if (glare) glare.style.opacity = '0';
       });
+
+      wrapper.addEventListener('mousedown', (e) => triggerLiquidRipple(e, card));
     });
 
-    // Giroscópio Mobile para inclinação física 3D real dos frascos nos smartphones
+    // Rastreamento dinâmico em cards de vidro líquido gerais
+    liquidGlassElements.forEach((el) => {
+      el.addEventListener('mousemove', (e) => {
+        if (isTouch) return;
+        const rect = el.getBoundingClientRect();
+        updateLiquidRefraction(el, e.clientX, e.clientY, rect);
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.setProperty('--liquid-x', '50%');
+        el.style.setProperty('--liquid-y', '50%');
+      });
+
+      el.addEventListener('mousedown', (e) => triggerLiquidRipple(e, el));
+    });
+
+    // Resposta tátil e refração ao toque no Mobile (TouchMove / TouchStart)
+    if (isTouch) {
+      liquidGlassElements.forEach((el) => {
+        el.addEventListener('touchstart', (e) => {
+          triggerLiquidRipple(e, el);
+          if (e.touches && e.touches[0]) {
+            const rect = el.getBoundingClientRect();
+            updateLiquidRefraction(el, e.touches[0].clientX, e.touches[0].clientY, rect);
+          }
+        }, { passive: true });
+
+        el.addEventListener('touchmove', (e) => {
+          if (e.touches && e.touches[0]) {
+            const rect = el.getBoundingClientRect();
+            updateLiquidRefraction(el, e.touches[0].clientX, e.touches[0].clientY, rect);
+          }
+        }, { passive: true });
+      });
+    }
+
+    // Giroscópio Físico Mobile: inclinação real do celular altera a refração de luz e ângulo dos reflexos
     if (window.DeviceOrientationEvent && isTouch) {
       window.addEventListener('deviceorientation', (e) => {
         if (e.gamma === null || e.beta === null) return;
-        const rotY = Math.max(-14, Math.min(14, e.gamma * 0.45));
-        const rotX = Math.max(-14, Math.min(14, (e.beta - 45) * 0.45));
-        tiltCards.forEach(wrapper => {
+        const gamma = Math.max(-45, Math.min(45, e.gamma));
+        const beta = Math.max(-45, Math.min(45, e.beta - 45));
+
+        const rotY = gamma * 0.35;
+        const rotX = beta * 0.35;
+        const pctX = 50 + (gamma / 45) * 35;
+        const pctY = 50 + (beta / 45) * 35;
+        const dynamicAngle = Math.round((Math.atan2(beta, gamma) * 180) / Math.PI + 180);
+
+        // Atualiza a inclinação nos cards tilt
+        tiltWrappers.forEach((wrapper) => {
           const card = wrapper.querySelector('.tilt-card');
           if (card) {
             card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg) scale3d(1.01, 1.01, 1.01)`;
           }
         });
+
+        // Atualiza a refração líquida global em todos os elementos de vidro
+        document.documentElement.style.setProperty('--liquid-x', `${pctX.toFixed(1)}%`);
+        document.documentElement.style.setProperty('--liquid-y', `${pctY.toFixed(1)}%`);
+        document.documentElement.style.setProperty('--liquid-refract-angle', `${dynamicAngle}deg`);
       }, { passive: true });
     }
 

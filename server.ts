@@ -18,6 +18,40 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 app.use(express.json({ limit: '25mb' }));
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
+// Middleware de Headers de Segurança e Otimização
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  next();
+});
+
+// Endpoint de Health Check para Railway e Monitoramento de Uptime
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'online',
+    service: 'siteozontepai',
+    uptime: Math.round(process.uptime()),
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Rate limiting simples em memória para proteger a cota da API do Gemini
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+function checkRateLimit(ip: string, limit = 12, windowMs = 60000): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + windowMs });
+    return true;
+  }
+  if (record.count >= limit) {
+    return false;
+  }
+  record.count += 1;
+  return true;
+}
+
 // Inicialização do Google GenAI SDK com a chave injetada pelo ambiente e telemetria
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY || '',
@@ -30,6 +64,13 @@ const ai = new GoogleGenAI({
 
 // Rota de Análise Facial por IA Biométrica de Alta Fidelidade
 app.post('/api/analyze-skin', async (req, res) => {
+  const clientIp = (req.headers['x-forwarded-for'] as string)?.split(',')[0] || req.socket.remoteAddress || 'unknown';
+  if (!checkRateLimit(clientIp)) {
+    return res.status(429).json({
+      success: false,
+      error: 'Muitas análises solicitadas em um curto intervalo. Por favor, aguarde um instante e tente novamente.',
+    });
+  }
   try {
     if (!process.env.GEMINI_API_KEY) {
       return res.status(503).json({
@@ -284,9 +325,26 @@ async function startServer() {
     app.use(vite.middlewares);
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
+  const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`Ozonteck Full-Stack Server rodando na porta ${PORT}`);
   });
+
+  // Graceful shutdown para Railway e orquestradores de container
+  const handleShutdown = (signal: string) => {
+    console.log(`[SHUTDOWN] Recebido sinal ${signal}. Encerrando conexões com segurança...`);
+    server.close(() => {
+      console.log('[SHUTDOWN] Servidor HTTP encerrado com sucesso.');
+      process.exit(0);
+    });
+    // Forçar saída se demorar mais que 10 segundos
+    setTimeout(() => {
+      console.error('[SHUTDOWN] Forçando encerramento após timeout.');
+      process.exit(1);
+    }, 10000).unref();
+  };
+
+  process.on('SIGTERM', () => handleShutdown('SIGTERM'));
+  process.on('SIGINT', () => handleShutdown('SIGINT'));
 }
 
 startServer();
