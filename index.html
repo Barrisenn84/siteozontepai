@@ -96,7 +96,7 @@
       height: 100vh;
       pointer-events: none;
       z-index: 999;
-      opacity: 0.035;
+      opacity: 0.015;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
@@ -345,59 +345,53 @@
     .sound-bar:nth-child(3) { animation-delay: 0.4s; }
     .sound-bar:nth-child(4) { animation-delay: 0.1s; }
 
-    /* Biophotonic AI Scanline & HUD Reticle */
-    @keyframes scanlineAnim {
-      0% { top: 2%; opacity: 0.85; }
-      50% { opacity: 1; }
-      100% { top: 96%; opacity: 0.85; }
+    /* Biophotonic AI Volumetric Scanner (Geneva Clinical Grade) */
+    @keyframes volumetricSweepAnim {
+      0% { top: -10%; opacity: 0; }
+      15% { opacity: 0.75; }
+      50% { opacity: 0.95; }
+      85% { opacity: 0.75; }
+      100% { top: 105%; opacity: 0; }
     }
 
     .animate-scanline {
-      animation: scanlineAnim 2.2s ease-in-out infinite alternate;
+      animation: volumetricSweepAnim 3.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
-    .hud-corner-tl {
+    .optic-reticle-corner {
       position: absolute;
-      top: 8px;
-      left: 8px;
-      width: 16px;
-      height: 16px;
-      border-top: 2px solid #00E5BE;
-      border-left: 2px solid #00E5BE;
+      width: 14px;
+      height: 14px;
       pointer-events: none;
+      transition: all 0.3s ease;
     }
-
-    .hud-corner-tr {
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      width: 16px;
-      height: 16px;
-      border-top: 2px solid #00E5BE;
-      border-right: 2px solid #00E5BE;
-      pointer-events: none;
+    .optic-reticle-tl {
+      top: 10px;
+      left: 10px;
+      border-top: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-left: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-top-left-radius: 4px;
     }
-
-    .hud-corner-bl {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      width: 16px;
-      height: 16px;
-      border-bottom: 2px solid #00E5BE;
-      border-left: 2px solid #00E5BE;
-      pointer-events: none;
+    .optic-reticle-tr {
+      top: 10px;
+      right: 10px;
+      border-top: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-right: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-top-right-radius: 4px;
     }
-
-    .hud-corner-br {
-      position: absolute;
-      bottom: 8px;
-      right: 8px;
-      width: 16px;
-      height: 16px;
-      border-bottom: 2px solid #00E5BE;
-      border-right: 2px solid #00E5BE;
-      pointer-events: none;
+    .optic-reticle-bl {
+      bottom: 10px;
+      left: 10px;
+      border-bottom: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-left: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-bottom-left-radius: 4px;
+    }
+    .optic-reticle-br {
+      bottom: 10px;
+      right: 10px;
+      border-bottom: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-right: 1.5px solid rgba(0, 229, 190, 0.6);
+      border-bottom-right-radius: 4px;
     }
   </style>
 </head>
@@ -558,75 +552,75 @@
         <div class="text-center max-w-3xl mx-auto mb-16">
           <div class="inline-flex items-center gap-2 text-bio-glow text-xs font-mono font-semibold uppercase tracking-widest mb-3">
             <i data-lucide="atom" class="w-4 h-4"></i>
-            <span>Biotecnologia ao Alcance de Todos</span>
+            <span>Ciência Avançada Transdérmica</span>
           </div>
           <h2 class="font-display font-bold text-3xl md:text-5xl text-white tracking-tight mb-4">
-            Como Funciona o Ozônio (O<sub class="text-bio-glow">3</sub>) Explicado de Forma Simples
+            A Ciência do Ozônio Medicinal (O<sub class="text-bio-glow">3</sub>) Aplicada à Alta Cosmética
           </h2>
           <p class="text-slate-300 text-sm md:text-base leading-relaxed">
-            Você já sentiu aquele cheiro fresco e revigorante no ar depois de uma chuva boa de verão? Aquilo é o ozônio natural da natureza limpando o ar. A <strong>Ozonteck</strong> pegou essa mesma força da natureza e a estabilizou em óleos vegetais puros para cuidar da sua pele todos os dias!
+            O ozônio triatômico é um dos agentes oxidativos e regenerativos mais nobres e potentes da biosfera. Através de processos biotecnológicos patenteados, a <strong>Ozonteck</strong> estabiliza o oxigênio ativo em matrizes lipídicas puras — proporcionando bioestimulação mitocondrial, oxigenação tecidual profunda e defesa antioxidante superior.
           </p>
         </div>
 
-        <!-- 3 Pilares com Analogias Didáticas -->
+        <!-- 3 Pilares Científicos de Alta Performance -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           <!-- Pilar 1 -->
-          <div class="glass-ultra rounded-2xl p-8 border border-bio-glow/20 flex flex-col justify-between hover:border-bio-glow/50 transition-all duration-300">
+          <div class="liquid-glass rounded-2xl p-8 border border-bio-glow/20 flex flex-col justify-between hover:border-bio-glow/50 transition-all duration-300">
             <div>
               <div class="w-12 h-12 rounded-xl bg-bio-glow/15 border border-bio-glow/30 flex items-center justify-center text-bio-glow mb-6">
                 <i data-lucide="dna" class="w-6 h-6"></i>
               </div>
-              <h3 class="font-display font-bold text-xl text-white mb-2">1. O Oxigênio com Turbo (O3)</h3>
+              <h3 class="font-display font-bold text-xl text-white mb-2">1. Bio-Oxigenação Celular & Síntese Redox</h3>
               <div class="p-3 rounded-xl bg-bio-glow/10 border border-bio-glow/20 text-bio-glow text-xs font-mono mb-4">
-                🚲 <strong>Analogia:</strong> A bicicleta com roda extra de energia!
+                ⚡ <strong>Potencial Redox:</strong> Reativação Mitocondrial & Respiração Tecidual
               </div>
               <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                O oxigênio comum que respiramos é o <strong>O2</strong> (como uma bicicleta normal). O ozônio é o <strong>O3</strong>: ele tem um átomo a mais de oxigênio cheio de energia. Quando toca sua pele, esse oxigênio a mais acorda as células, como abrir a janela de manhã e encher o peito de ar puro!
+                Enquanto o oxigênio diatômico (O₂) atua na respiração basal, o ozônio estabilizado (O₃) age como um bioestimulador celular de alta performance. Em contato com a epiderme, desencadeia uma cascata biológica controlada de oxigênio nascente, reativando fibroblastos e estimulando a síntese natural de colágeno e elastina.
               </p>
             </div>
             <div class="pt-4 border-t border-slate-800 text-xs font-mono flex items-center justify-between text-slate-400">
-              <span>ENERGIA VITAL PURA</span>
+              <span>BIOESTIMULAÇÃO CELULAR</span>
               <span class="text-bio-glow font-bold">100% ATIVA</span>
             </div>
           </div>
 
           <!-- Pilar 2 -->
-          <div class="glass-ultra rounded-2xl p-8 border border-bio-glow/20 flex flex-col justify-between hover:border-bio-glow/50 transition-all duration-300">
+          <div class="liquid-glass rounded-2xl p-8 border border-bio-glow/20 flex flex-col justify-between hover:border-bio-glow/50 transition-all duration-300">
             <div>
               <div class="w-12 h-12 rounded-xl bg-bio-glow/15 border border-bio-glow/30 flex items-center justify-center text-bio-glow mb-6">
                 <i data-lucide="shield" class="w-6 h-6"></i>
               </div>
-              <h3 class="font-display font-bold text-xl text-white mb-2">2. O Escudo Protetor da Pele</h3>
+              <h3 class="font-display font-bold text-xl text-white mb-2">2. Regeneração Biomimética da Barreira Lipídica</h3>
               <div class="p-3 rounded-xl bg-bio-glow/10 border border-bio-glow/20 text-bio-glow text-xs font-mono mb-4">
-                🧱 <strong>Analogia:</strong> A parede de tijolinhos e a capa de chuva!
+                🛡️ <strong>Integridade Transcutânea:</strong> Bloqueio Anti-TEWL & Antipoluição
               </div>
               <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                Pense na sua pele como uma parede de tijolos. O sol, a poeira e o vento desgastam o cimento dessa parede. O <strong>Óleo Sofh Ozonizado</strong> funciona como um cimento novinho e uma capa impermeável: segura a água do corpo para não evaporar e não deixa a sujeira de fora penetrar.
+                A integridade cutânea depende da homeostase lipídica entre ceramidas e ácidos graxos. O <strong>Óleo Sofh Ozonizado</strong> mimetiza a arquitetura celular humana, formando um microfilme tridimensional respirável que impede a perda transepidérmica de água (TEWL) e neutraliza o estresse oxidativo provocado pela radiação UV e poluentes urbanos.
               </p>
             </div>
             <div class="pt-4 border-t border-slate-800 text-xs font-mono flex items-center justify-between text-slate-400">
-              <span>ESCUDO NATURAL</span>
-              <span class="text-bio-glow font-bold">PROTEÇÃO DIÁRIA</span>
+              <span>ESCUDO BIOMIMÉTICO</span>
+              <span class="text-bio-glow font-bold">PROTEÇÃO TRANSCUTÂNEA</span>
             </div>
           </div>
 
           <!-- Pilar 3 -->
-          <div class="glass-ultra rounded-2xl p-8 border border-bio-glow/20 flex flex-col justify-between hover:border-bio-glow/50 transition-all duration-300">
+          <div class="liquid-glass rounded-2xl p-8 border border-bio-glow/20 flex flex-col justify-between hover:border-bio-glow/50 transition-all duration-300">
             <div>
               <div class="w-12 h-12 rounded-xl bg-bio-glow/15 border border-bio-glow/30 flex items-center justify-center text-bio-glow mb-6">
                 <i data-lucide="check-check" class="w-6 h-6"></i>
               </div>
-              <h3 class="font-display font-bold text-xl text-white mb-2">3. Segurança e Confiança Total</h3>
+              <h3 class="font-display font-bold text-xl text-white mb-2">3. Rigor Farmacopeico & Homologação Anvisa</h3>
               <div class="p-3 rounded-xl bg-bio-glow/10 border border-bio-glow/20 text-bio-glow text-xs font-mono mb-4">
-                🛡️ <strong>Analogia:</strong> O cinto de segurança de um carro de luxo!
+                🔬 <strong>Garantia Biológica:</strong> Índice de Peróxido Controlado & Laudos Oficiais
               </div>
               <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                Você pode usar com total tranquilidade. Todas as fórmulas são 100% regulamentadas na Anvisa, feitas com óleos botânicos puros (girassol e abacate selecionados), livres de parabenos e substâncias agressivas. É qualidade ouro testada em laboratório próprio.
+                Todas as formulações são desenvolvidas sob os mais estritos protocolos de Boas Práticas de Fabricação (BPF), com controle analítico de índice de peróxido e espectrofotometria lote a lote. Fórmulas hipoalergênicas, 100% notificadas na Anvisa, isentas de parabenos, derivados de petróleo e metais pesados.
               </p>
             </div>
             <div class="pt-4 border-t border-slate-800 text-xs font-mono flex items-center justify-between text-slate-400">
-              <span>PADRÃO ANVISA</span>
+              <span>PADRÃO ANVISA GRAU II</span>
               <span class="text-bio-glow font-bold">CERTIFICADO</span>
             </div>
           </div>
@@ -697,10 +691,10 @@
 
                 <h3 class="font-display font-bold text-xl text-white mb-1">Óleo Sofh Ozonizado</h3>
                 <div class="inline-block px-2.5 py-0.5 rounded bg-bio-glow/10 border border-bio-glow/20 text-bio-glow text-[10px] font-mono mb-2">
-                  🌱 <strong>Analogia:</strong> Como um banho de orvalho nas folhas de uma planta!
+                  🧬 <strong>Bioativo Nobre:</strong> Matriz Botânica Ozonizada de Ultra-Penetração
                 </div>
                 <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                  O "superalimento" diário da pele. Umas gotinhas à noite acalmam o rosto, fecham os poros dilatados e criam uma película protetora que não deixa a hidratação escapar, devolvendo toque macio de veludo.
+                  O elixir regenerador de referência clínica. Gotas de precisão noturna restauram a coesão lipídica, refinam o relevo dérmico e formam uma barreira biomimética de hidratação contínua, conferindo viço luminoso e textura aveludada imediata.
                 </p>
 
                 <!-- Botão Inspeção 3D 360° -->
@@ -761,10 +755,10 @@
 
                 <h3 class="font-display font-bold text-xl text-white mb-1">Sabonete Líquido OX3</h3>
                 <div class="inline-block px-2.5 py-0.5 rounded bg-bio-glow/10 border border-bio-glow/20 text-bio-glow text-[10px] font-mono mb-2">
-                  🫧 <strong>Analogia:</strong> A faxina suave que limpa como seda fina!
+                  ✨ <strong>Purificação Dermo-Ativa:</strong> Higiene com pH Fisiológico e Assepsia O3
                 </div>
                 <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                  Limpa a poluição e a oleosidade do dia a dia sem deixar a pele repuxando ou ardendo. Respeita o equilíbrio natural do rosto e deixa uma sensação deliciosa de banho tomado e frescor duradouro.
+                  Assepsia biotecnológica profunda e equilibrada. Remove impurezas polutivas e excesso de sebo sem agredir o manto hidrolipídico ou romper a barreira do microbioma dérmico protetor, conferindo sensação refrescante e pureza prolongada.
                 </p>
 
                 <!-- Botão Inspeção 3D 360° -->
@@ -829,10 +823,10 @@
 
                 <h3 class="font-serif font-bold text-xl text-gold-light mb-1">Perfume Presidente (EDP)</h3>
                 <div class="inline-block px-2.5 py-0.5 rounded bg-gold-royal/20 border border-gold-royal/40 text-gold-light text-[10px] font-mono mb-2">
-                  👑 <strong>Analogia:</strong> Como um terno sob medida ou aquele abraço inesquecível!
+                  👑 <strong>Assinatura Olfativa VIP:</strong> Alta Perfumaria com Maceração Nobre Prolongada
                 </div>
                 <p class="text-slate-300 text-xs leading-relaxed mb-4">
-                  A marca da sua presença. Notas nobres de madeira, couro e especiarias com fixação poderosa de 12h a 16h na pele. Pense nele como uma assinatura olfativa que transmite elegância e autoridade por onde você passa.
+                  A quintessência do prestígio e autoridade executiva. Construído em torno de acordes opulentos de madeiras nobres, couro artesanal e especiarias da alta perfumaria, assegura silagem marcante e fixação de alta densidade entre 12h e 16h.
                 </p>
 
                 <!-- PIRÂMIDE OLFATIVA INTERATIVA TÁTIL -->
@@ -890,63 +884,51 @@
               <!-- Aura Luminosa / Anel Especular de Autoridade -->
               <div class="absolute -inset-1.5 bg-gradient-to-tr from-bio-glow via-gold-royal to-cyan-400 rounded-3xl blur-md opacity-40 group-hover:opacity-75 transition-opacity duration-500"></div>
               
-              <div class="relative glass-ultra rounded-3xl p-3.5 border border-bio-glow/40 shadow-2xl bg-ozone-950 overflow-hidden">
+              <div class="relative liquid-glass rounded-3xl p-4 border border-gold-royal/40 shadow-2xl bg-ozone-950 overflow-hidden">
                 
-                <!-- Badge Flutuante de Status Online -->
-                <div class="absolute top-6 left-6 z-20 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ozone-950/90 border border-bio-glow/40 backdrop-blur-md text-[10px] font-mono text-bio-glow shadow-lg">
-                  <span class="w-2 h-2 rounded-full bg-bio-glow animate-ping"></span>
-                  <span class="font-bold">CONSULTOR HOMOLOGADO</span>
+                <!-- Selo Holográfico de Embaixador Oficial -->
+                <div class="absolute top-6 left-6 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ozone-950/90 border border-gold-royal/50 backdrop-blur-md text-[10px] font-mono text-gold-light shadow-xl">
+                  <span class="w-2 h-2 rounded-full bg-gold-royal animate-pulse"></span>
+                  <span class="font-bold tracking-wider">CONSULTOR EXECUTIVO HOMOLOGADO</span>
                 </div>
 
-                <!-- Botão de Upload Direto para Fidelidade 100% de FOTO1_EDITADA.png -->
-                <input type="file" id="owner-photo-upload" accept="image/*" class="hidden" onchange="handleOwnerPhotoUpload(event)">
-                <button type="button" 
-                        onclick="document.getElementById('owner-photo-upload').click()" 
-                        title="Carregar seu arquivo FOTO1_EDITADA.png com 100% de fidelidade" 
-                        class="absolute top-5 right-5 z-20 px-2.5 py-1.5 rounded-xl bg-ozone-950/90 border border-bio-glow/50 text-bio-glow hover:bg-bio-glow hover:text-ozone-950 transition-all flex items-center gap-1.5 shadow-lg group/btn cursor-pointer">
-                  <i data-lucide="camera" class="w-3.5 h-3.5"></i>
-                  <span class="text-[10px] font-mono font-bold">Substituir Foto</span>
-                </button>
-
-                <!-- Foto do Dono do Site: Antonio Gonçalo (FOTO1_EDITADA.png) -->
-                <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-ozone-900 border border-slate-800 cursor-pointer"
-                     onclick="document.getElementById('owner-photo-upload').click()"
-                     title="Clique para selecionar o arquivo FOTO1_EDITADA.png do seu computador">
+                <!-- Foto Oficial de Antonio Gonçalo em Moldura Editorial Forbes/GQ -->
+                <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-ozone-900 border border-gold-royal/20">
                   <img id="antonio-photo-img"
                        src="/FOTO1_EDITADA.png" 
                        onerror="if (this.src.indexOf('antonio-goncalo.png') === -1) { this.src='/antonio-goncalo.png'; } else if (this.src.indexOf('antonio-goncalo-senior.jpg') === -1) { this.src='/antonio-goncalo-senior.jpg'; } else { this.onerror=null; }"
-                       alt="Antonio Gonçalo - Representante Sênior Ozonteck" 
+                       alt="Antonio Gonçalo - Consultor Executivo & Distribuidor Autorizado Ozonteck" 
                        class="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-700">
                   
                   <div class="absolute inset-0 bg-gradient-to-t from-ozone-950 via-transparent to-transparent opacity-80 pointer-events-none"></div>
                   
-                  <!-- Tarja de Identificação na Imagem -->
-                  <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-ozone-950/85 backdrop-blur-md border border-slate-800">
+                  <!-- Placa de Identificação de Prestígio -->
+                  <div class="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-ozone-950/90 backdrop-blur-lg border border-gold-royal/30 shadow-lg">
                     <div class="flex items-center justify-between">
                       <div>
                         <h4 class="font-display font-extrabold text-base text-white tracking-tight">
                           ANTONIO GONÇALO
                         </h4>
-                        <span class="text-[11px] font-mono font-semibold text-bio-glow uppercase tracking-wider block">
-                          Representante Sênior Ozonteck
+                        <span class="text-[11px] font-mono font-semibold text-gold-royal uppercase tracking-wider block">
+                          Consultor Executivo Master · Distribuidor Autorizado
                         </span>
                       </div>
-                      <div class="w-8 h-8 rounded-lg bg-bio-glow/20 border border-bio-glow/40 flex items-center justify-center text-bio-glow">
-                        <i data-lucide="shield-check" class="w-4 h-4"></i>
+                      <div class="w-9 h-9 rounded-xl bg-gold-royal/15 border border-gold-royal/40 flex items-center justify-center text-gold-royal shadow-inner">
+                        <i data-lucide="award" class="w-5 h-5"></i>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <!-- Resumo Rápido de Contato -->
-                <div class="mt-3.5 px-2 py-2 flex items-center justify-between text-xs font-mono text-slate-300">
+                <!-- Credenciamento Oficial e Contato Direto -->
+                <div class="mt-4 px-2 py-2 flex items-center justify-between text-xs font-mono text-slate-300 border-t border-white/5 pt-3">
                   <span class="flex items-center gap-1.5 text-slate-400">
-                    <i data-lucide="phone" class="w-3.5 h-3.5 text-bio-glow"></i>
-                    WhatsApp Direto:
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-bio-glow"></i>
+                    Credenciamento:
                   </span>
-                  <a href="https://wa.me/5581997240477?text=Ol%C3%A1%20Antonio%20Gon%C3%A7alo!%20Gostaria%20de%20uma%20consultoria%20personalizada%20Ozonteck." target="_blank" rel="noopener noreferrer" class="font-bold text-bio-glow hover:underline">
-                    (81) 99724-0477
-                  </a>
+                  <span class="font-bold text-white tracking-wider">
+                    CNPJ 38.540.165/0001-29
+                  </span>
                 </div>
 
               </div>
@@ -1130,20 +1112,20 @@
                     <!-- Imagem Preview -->
                     <img id="ai-preview-img" src="" alt="Sua foto facial" class="w-full h-full object-cover">
                     
-                    <!-- HUD Reticle Corners -->
-                    <div class="hud-corner-tl"></div>
-                    <div class="hud-corner-tr"></div>
-                    <div class="hud-corner-bl"></div>
-                    <div class="hud-corner-br"></div>
+                    <!-- Retícula Óptica de Precisão Dérmica -->
+                    <div class="optic-reticle-corner optic-reticle-tl"></div>
+                    <div class="optic-reticle-corner optic-reticle-tr"></div>
+                    <div class="optic-reticle-corner optic-reticle-bl"></div>
+                    <div class="optic-reticle-corner optic-reticle-br"></div>
 
-                    <!-- Linha Laser de Scanner Ativa -->
-                    <div id="ai-scanline-laser" class="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-bio-glow to-transparent shadow-[0_0_12px_#00E5BE] animate-scanline pointer-events-none"></div>
+                    <!-- Varredura Volumétrica Dérmica (Swiss Clinical Sweep) -->
+                    <div id="ai-scanline-laser" class="absolute left-0 right-0 h-16 bg-gradient-to-b from-transparent via-bio-glow/20 to-transparent border-b border-bio-glow/60 shadow-[0_0_20px_rgba(0,229,190,0.35)] animate-scanline pointer-events-none"></div>
 
-                    <!-- Overlay de grade holográfica sutil -->
-                    <div class="absolute inset-0 bg-[linear-gradient(rgba(0,229,190,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,190,0.06)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none"></div>
+                    <!-- Overlay de grade holográfica de microprecisão -->
+                    <div class="absolute inset-0 bg-[linear-gradient(rgba(0,229,190,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,190,0.04)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none"></div>
 
-                    <div class="absolute bottom-2 left-2 right-2 text-center text-[10px] font-mono text-bio-glow bg-ozone-950/85 px-2 py-0.5 rounded border border-bio-glow/30">
-                      MIRA BIOMÉTRICA CALIBRADA
+                    <div class="absolute bottom-2.5 left-2.5 right-2.5 text-center text-[10px] font-mono text-bio-glow bg-ozone-950/90 backdrop-blur-md px-2 py-1 rounded-lg border border-bio-glow/30 tracking-wider">
+                      VARREDURA DERMO-ÓPTICA CALIBRADA
                     </div>
                   </div>
 
@@ -1272,22 +1254,22 @@
                 </div>
               </div>
 
-              <!-- CARD ESPECIAL: ANALOGIA PRÁTICA PARA FIXAR (Didática Simples para Todo Público) -->
+              <!-- CARD DE PARECER FARMACO-COSMÉTICO -->
               <div class="p-5 rounded-2xl bg-gradient-to-r from-bio-glow/15 via-ozone-900 to-ozone-950 border border-bio-glow/40 space-y-2">
                 <div class="flex items-center gap-2 text-bio-glow font-mono text-xs font-bold uppercase tracking-wider">
-                  <i data-lucide="lightbulb" class="w-4 h-4 text-bio-glow"></i>
-                  <span>Analogia Prática para Entender & Fixar</span>
+                  <i data-lucide="microscope" class="w-4 h-4 text-bio-glow"></i>
+                  <span>Mecanismo de Ação Recomendado & Foco Celular</span>
                 </div>
                 <p id="result-simple-analogy" class="text-xs sm:text-sm text-slate-100 leading-relaxed font-sans">
-                  Carregando analogia explicativa simples...
+                  Carregando mecanismo de ação e conduta dermocosmética...
                 </p>
               </div>
 
-              <!-- Card: Diagnóstico & Parecer Técnico em Linguagem Simples -->
+              <!-- Card: Diagnóstico & Parecer Técnico Dermocosmético -->
               <div class="p-6 rounded-2xl glass-subtle border border-bio-glow/30 space-y-3">
                 <div class="flex items-center gap-2 text-bio-glow font-mono text-xs font-semibold uppercase">
-                  <i data-lucide="smile" class="w-4 h-4"></i>
-                  <span>Como Está a Sua Pele Hoje (Explicação Simples)</span>
+                  <i data-lucide="activity" class="w-4 h-4"></i>
+                  <span>Parecer Técnico do Manto Cutâneo</span>
                 </div>
                 <div>
                   <h4 id="result-skin-type" class="font-display font-bold text-xl text-white">
@@ -1464,10 +1446,10 @@
             Encontre o CD Mais Próximo
           </h2>
           <div class="inline-block px-3 py-1 rounded-xl bg-bio-glow/10 border border-bio-glow/20 text-bio-glow text-xs font-mono mb-3">
-            🏪 <strong>Analogia da Padaria da Esquina:</strong> O seu produto já está guardadinho perto de você!
+            📍 <strong>Malha Logística Descentralizada:</strong> Estoque Estratégico Próximo a Você
           </div>
           <p class="text-slate-300 text-xs md:text-sm leading-relaxed">
-            Consulte a disponibilidade de retirada imediata ou entrega no mesmo dia em nossa malha de <strong>mais de 300 Centros de Distribuição</strong> no Brasil. Sem esperas demoradas de correios tradicionais.
+            Consulte a disponibilidade de retirada imediata ou remessa expressa na malha capilarizada de <strong>mais de 300 Centros de Distribuição Oficiais</strong> em todo o Brasil. Atendimento ágil e despacho sem intermediários.
           </p>
         </div>
 
@@ -2615,7 +2597,8 @@
       moleculeGroup.add(ringMesh2);
 
       // Nuvem de 2.000 partículas bioativas
-      const particleCount = isTouch ? 600 : 2000;
+      // Nuvem de partículas bioativas de alta definição (densidade elegante de luxo)
+      const particleCount = isTouch ? 90 : 220;
       const partGeo = new THREE.BufferGeometry();
       const partPos = new Float32Array(particleCount * 3);
 
@@ -2642,7 +2625,7 @@
 
       const pTexture = new THREE.CanvasTexture(pCanvas);
       const partMat = new THREE.PointsMaterial({
-        size: 0.9,
+        size: 0.85,
         map: pTexture,
         transparent: true,
         blending: THREE.AdditiveBlending,
@@ -2658,8 +2641,8 @@
       let targetY = 0;
 
       window.addEventListener('mousemove', (e) => {
-        targetX = (e.clientX - window.innerWidth / 2) * 0.0012;
-        targetY = (e.clientY - window.innerHeight / 2) * 0.0012;
+        targetX = (e.clientX - window.innerWidth / 2) * 0.0008;
+        targetY = (e.clientY - window.innerHeight / 2) * 0.0008;
       });
 
       // Animação Contínua com Pulsação Bioativa e Efeito Respiração + Bloom Dinâmico (Com pausa inteligente em background)
@@ -2670,25 +2653,25 @@
         if (!isTabVisible) return;
         animFrameId = requestAnimationFrame(renderThree);
 
-        mouseX += (targetX - mouseX) * 0.05;
-        mouseY += (targetY - mouseY) * 0.05;
+        mouseX += (targetX - mouseX) * 0.04;
+        mouseY += (targetY - mouseY) * 0.04;
 
-        // Auto-rotação sutil
-        moleculeGroup.rotation.y += 0.004;
-        moleculeGroup.rotation.x = mouseY * 1.5;
-        moleculeGroup.rotation.z = mouseX * 1.5;
+        // Auto-rotação sutil e fluida
+        moleculeGroup.rotation.y += 0.0018;
+        moleculeGroup.rotation.x = mouseY * 1.2;
+        moleculeGroup.rotation.z = mouseX * 1.2;
 
         // Pulsação orgânica dos átomos (simulação de bio-oxigênio vivo)
-        const timeNow = Date.now() * 0.003;
+        const timeNow = Date.now() * 0.002;
         atoms.forEach((atom, idx) => {
-          const individualPulse = 1.0 + Math.sin(timeNow + idx * 1.3) * 0.05;
+          const individualPulse = 1.0 + Math.sin(timeNow + idx * 1.3) * 0.04;
           atom.scale.set(individualPulse, individualPulse, individualPulse);
         });
 
-        ringMesh1.rotation.z += 0.008;
-        ringMesh2.rotation.z -= 0.006;
+        ringMesh1.rotation.z += 0.004;
+        ringMesh2.rotation.z -= 0.003;
 
-        particleSystem.rotation.y += 0.001;
+        particleSystem.rotation.y += 0.0006;
 
         // Modulação do brilho ciano (UnrealBloomPass + Emissão + Partículas) com velocidade de rolagem (Lenis)
         let scrollVelocity = 0;
@@ -2696,13 +2679,13 @@
           scrollVelocity = Math.abs(window.lenis.velocity || 0);
         }
 
-        // Super-Saturação Energética: o Bloom passa de 1.15 (base pura) para até 3.65 em rolagem rápida
-        const targetBloomStrength = 1.15 + Math.min(scrollVelocity * 0.42, 2.5);
-        const targetBloomRadius = 0.45 + Math.min(scrollVelocity * 0.09, 0.75);
+        // Bloom suave e cristalino com brilho contido
+        const targetBloomStrength = 0.85 + Math.min(scrollVelocity * 0.22, 1.1);
+        const targetBloomRadius = 0.4 + Math.min(scrollVelocity * 0.06, 0.45);
 
         if (bloomPass) {
-          bloomPass.strength += (targetBloomStrength - bloomPass.strength) * 0.12;
-          bloomPass.radius += (targetBloomRadius - bloomPass.radius) * 0.12;
+          bloomPass.strength += (targetBloomStrength - bloomPass.strength) * 0.08;
+          bloomPass.radius += (targetBloomRadius - bloomPass.radius) * 0.08;
         }
 
         // Super-saturação luminosa da matéria da molécula e partículas
@@ -3580,10 +3563,10 @@
         elSkinAge.textContent = data.estimatedSkinAge || 'Idade Estimada da Pele: Aprox. 27 a 32 anos';
       }
 
-      // Analogia Prática Didática
+      // Mecanismo Celular & Foco Dermo-Ativo
       const elAnalogy = document.getElementById('result-simple-analogy');
       if (elAnalogy) {
-        elAnalogy.textContent = data.simpleAnalogy || '🌱 Analogia da Planta e da Chuva Fresca: Pense na sua pele como uma plantinha que tomou sol o dia todo. O ozônio age como aquela chuva leve de fim de tarde que enche as folhas de viço e vida nova na hora!';
+        elAnalogy.textContent = data.simpleAnalogy || '🔬 Mecanismo Celular Bioestimulador: A liberação tópica de oxigênio ativo (O₃) atua sinergicamente na permeabilidade de membrana, estimulando a síntese endógena de antioxidantes e restabelecendo a barreira hidrolipídica contra agressões oxidativas.';
       }
 
       // Animando Dials de Métricas Dérmicas
