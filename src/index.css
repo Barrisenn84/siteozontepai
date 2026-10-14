@@ -108,3 +108,36 @@
 .glass-subtext {
   color: rgba(226, 232, 240, 0.8);
 }
+
+.glass-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: radial-gradient(
+    100% 100% at var(--liquid-x, 50%) var(--liquid-y, 50%),
+    rgba(0, 229, 190, 0.25) 0%,
+    rgba(6, 19, 36, 0.75) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 229, 190, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 229, 190, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.glass-button:hover {
+  border-color: rgba(0, 229, 190, 0.75);
+  box-shadow: 0 6px 20px rgba(0, 229, 190, 0.35);
+  transform: translateY(-1px);
+}
+
+.glass-button:active {
+  transform: scale(0.97) translateY(1px);
+}
