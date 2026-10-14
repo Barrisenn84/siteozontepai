@@ -1,1 +1,60 @@
-@import "tailwindcss";
+/* src/index.css - Configurações Liquid Glass para interface vidro líquido */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glass-morphism {
+  @apply backdrop-blur-xl bg-white/20 border border-white/20 rounded-2xl;
+}
+
+.glass-morphism:hover {
+  @apply border-white/30 transition-colors duration-200;
+}
+
+/* Efeito de refração "liquid" - animação dinâmica */
+.glass-morphism::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 50%, 
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  z-index: -1;
+  animation: liquid-reflect 8s ease-in-out infinite;
+}
+
+@keyframes liquid-reflect {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Variantes para estados interativos */
+.glass-morphism.hover {
+  @apply border-white/40 shadow-lg shadow-white/10;
+}
+
+.glass-morphism.active {
+  @apply border-white/50 scale-[0.98];
+}
+
+/* Texto e conteúdo dentro do vidro */
+.glass-text {
+  @apply text-white text-opacity-90;
+}
+
+.glass-subtext {
+  @apply text-white/70 text-sm;
+}
+
+/* Botões com efeito Liquid Glass */
+.glass-button {
+  @apply glass-morphism px-4 py-2 rounded-xl hover:border-white/50 transition-all duration-200;
+}
+
+.glass-button:active {
+  @apply scale-[0.97];
+}
