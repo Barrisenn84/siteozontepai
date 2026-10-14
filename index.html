@@ -427,32 +427,42 @@
               Ozonteck Internacional
               <span class="w-1.5 h-1.5 rounded-full bg-bio-glow animate-pulse"></span>
             </span>
-            <span class="text-[10px] uppercase font-mono tracking-widest text-bio-glow font-semibold">Antonio Gonçalo · Representante Sênior</span>
+            <span class="text-[10px] uppercase font-mono tracking-widest text-gold-royal font-semibold">Antonio Gonçalo · Consultor Executivo & Distribuidor</span>
           </div>
         </a>
 
         <!-- Menu de Navegação -->
-        <nav class="hidden lg:flex items-center gap-5 text-xs font-medium text-slate-300">
+        <nav class="hidden lg:flex items-center gap-4 text-xs font-medium text-slate-300">
           <a href="#hero" class="hover:text-bio-glow transition-colors py-1">Início</a>
           <a href="#biotecnologia" class="hover:text-bio-glow transition-colors py-1">Molécula O3</a>
           <a href="#showroom" class="hover:text-bio-glow transition-colors py-1">Showroom VIP</a>
           <a href="#representante" class="hover:text-bio-glow transition-colors py-1 text-bio-glow font-semibold">Representante</a>
           <a href="#diagnostico" class="hover:text-bio-glow transition-colors py-1">Diagnóstico Dérmico</a>
+          <a href="#localizador-cd" class="hover:text-bio-glow transition-colors py-1">Centros de Distribuição</a>
+          <a href="#simulador-lucro" class="text-gold-royal hover:text-gold-light transition-colors py-1 font-semibold flex items-center gap-1">
+            <i data-lucide="calculator" class="w-3.5 h-3.5 text-gold-royal"></i>
+            <span>Simulador de Lucro</span>
+          </a>
           <a href="#depoimentos" class="hover:text-bio-glow transition-colors py-1">Depoimentos</a>
-          <a href="#localizador-cd" class="hover:text-bio-glow transition-colors py-1">Localizar CD</a>
-          <a href="#autoridade" class="hover:text-bio-glow transition-colors py-1">Fábrica & CDs</a>
-          <a href="#jornadas" class="hover:text-bio-glow transition-colors py-1">Jornadas</a>
           <a href="#faq" class="hover:text-bio-glow transition-colors py-1">FAQ</a>
         </nav>
 
-        <!-- Ações do Header: Motor de Áudio Procedural + WhatsApp VIP -->
-        <div class="flex items-center gap-3">
+        <!-- Ações do Header: Concierge IA + Áudio Procedural + WhatsApp VIP -->
+        <div class="flex items-center gap-2.5">
           
+          <!-- Botão Concierge IA 24/7 Rápido -->
+          <button onclick="toggleConciergeChat()"
+                  title="Abrir Concierge Dérmico & Olfativo IA 24/7"
+                  class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-bio-glow/15 border border-bio-glow/40 hover:bg-bio-glow hover:text-ozone-950 text-bio-glow text-xs font-mono transition-all shadow-sm group">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform"></i>
+            <span class="hidden xl:inline font-bold">Concierge IA</span>
+          </button>
+
           <!-- Botão Web Audio API Sintetizado -->
           <button id="audio-toggle-btn" 
                   onclick="toggleSensoryAudio()"
                   title="Ativar ambientação sonora procedural (55Hz Lab Drone)"
-                  class="flex items-center gap-2 px-3.5 py-2 rounded-xl glass-subtle border border-slate-700 hover:border-bio-glow/40 text-xs text-slate-300 hover:text-white transition-all">
+                  class="flex items-center gap-2 px-3 py-2 rounded-xl glass-subtle border border-slate-700 hover:border-bio-glow/40 text-xs text-slate-300 hover:text-white transition-all">
             <div id="sound-indicator" class="flex items-end gap-0.5 h-4">
               <span class="sound-bar" style="animation-play-state: paused; height: 4px;"></span>
               <span class="sound-bar" style="animation-play-state: paused; height: 6px;"></span>
@@ -1706,6 +1716,222 @@
       </div>
     </section>
 
+    <!-- SEÇÃO SIMULADOR DE LUCRATIVIDADE & EXPANSÃO DE DISTRIBUIDORES (AGENTE 2) -->
+    <section id="simulador-lucro" class="py-28 px-6 md:px-12 relative overflow-hidden bg-gradient-to-b from-ozone-900/60 via-ozone-950 to-ozone-900/40 border-t border-b border-gold-royal/20">
+      
+      <!-- Aura e Brilho de Fundo em Ouro Real e Ciano -->
+      <div class="absolute top-1/3 -left-40 w-96 h-96 bg-gold-royal/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div class="absolute bottom-1/4 -right-40 w-96 h-96 bg-bio-glow/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div class="max-w-6xl mx-auto relative z-10">
+        
+        <!-- Cabeçalho Executivo -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 text-gold-royal text-xs font-mono font-semibold uppercase tracking-widest mb-3 bg-gold-royal/10 px-3.5 py-1.5 rounded-full border border-gold-royal/30">
+            <i data-lucide="trending-up" class="w-4 h-4 text-gold-royal"></i>
+            <span>Inteligência de Expansão Comercial</span>
+          </div>
+          <h2 class="font-display font-bold text-3xl md:text-5xl text-white tracking-tight mb-4">
+            Simulador de Lucro & Distribuição Autorizada
+          </h2>
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+            Calcule seu potencial de faturamento líquido mensal com a <strong>margem de até 100%</strong> no varejo, retirada imediata nos <strong>mais de 300 CDs homologados</strong> e mentoria direta com o Consultor Executivo <strong>Antonio Gonçalo</strong>.
+          </p>
+        </div>
+
+        <!-- Painel Principal em Liquid Glass Gold -->
+        <div class="liquid-glass rounded-3xl p-6 md:p-10 border border-gold-royal/30 shadow-2xl relative">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Coluna Esquerda: Controles Interativos -->
+            <div class="lg:col-span-7 space-y-6">
+              
+              <!-- 1. Seletor de Modelo de Negócio -->
+              <div>
+                <label class="block text-xs font-mono text-gold-royal uppercase font-semibold mb-2 flex items-center justify-between">
+                  <span>1. Selecione Seu Perfil de Atuação:</span>
+                  <span id="sim-profile-badge" class="text-[11px] text-slate-400 font-sans">Margem: 100% Líquida</span>
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <button type="button" 
+                          onclick="setSimProfile('consultor')" 
+                          id="btn-sim-consultor"
+                          class="p-3.5 rounded-xl border border-gold-royal/50 bg-gold-royal/20 text-gold-light text-left transition-all">
+                    <span class="block font-bold text-xs text-white">Consultor Direto</span>
+                    <span class="block text-[10px] text-slate-300 mt-0.5">1-2h/dia · Venda Pessoal</span>
+                  </button>
+                  <button type="button" 
+                          onclick="setSimProfile('clinica')" 
+                          id="btn-sim-clinica"
+                          class="p-3.5 rounded-xl border border-slate-700 hover:border-gold-royal/40 bg-ozone-950/80 text-slate-400 text-left transition-all">
+                    <span class="block font-bold text-xs text-white">Clínica & Spa</span>
+                    <span class="block text-[10px] text-slate-400 mt-0.5">Protocolos em Cabine</span>
+                  </button>
+                  <button type="button" 
+                          onclick="setSimProfile('lider')" 
+                          id="btn-sim-lider"
+                          class="p-3.5 rounded-xl border border-slate-700 hover:border-gold-royal/40 bg-ozone-950/80 text-slate-400 text-left transition-all">
+                    <span class="block font-bold text-xs text-white">Líder Regional</span>
+                    <span class="block text-[10px] text-slate-400 mt-0.5">Atacado & Equipes</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Slider Interativo de Meta de Lucro -->
+              <div class="p-6 rounded-2xl bg-ozone-950/80 border border-slate-800 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono text-slate-300 uppercase">2. Quanto Você Quer Lucrar no Mês?</span>
+                  <span class="text-[11px] font-mono text-bio-glow">Livre de Custo</span>
+                </div>
+                
+                <!-- Display Gigante do Lucro -->
+                <div class="flex items-baseline gap-2 pt-1">
+                  <span class="text-lg font-mono text-gold-royal font-bold">R$</span>
+                  <span id="sim-profit-display" class="font-display font-extrabold text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold-royal to-amber-200">
+                    5.000
+                  </span>
+                  <span class="text-xs font-mono text-slate-400">/ mês</span>
+                </div>
+
+                <!-- Input Range Estilizado -->
+                <input type="range" 
+                       id="sim-profit-range" 
+                       min="1500" 
+                       max="25000" 
+                       step="500" 
+                       value="5000"
+                       oninput="updateProfitSimulation()" 
+                       class="w-full h-2 rounded-lg bg-slate-800 appearance-none cursor-pointer accent-gold-royal">
+                
+                <div class="flex justify-between text-[10px] font-mono text-slate-500">
+                  <span>R$ 1.500 (Renda Extra)</span>
+                  <span>R$ 10.000 (Executivo)</span>
+                  <span>R$ 25.000+ (Master CD)</span>
+                </div>
+              </div>
+
+              <!-- 3. Integração com Centro de Distribuição mais próximo -->
+              <div>
+                <label class="block text-xs font-mono text-slate-300 uppercase mb-2">
+                  3. Selecione Seu Estado para Logística de Retirada Imediata:
+                </label>
+                <div class="flex gap-2">
+                  <select id="sim-state-select" onchange="updateSimCDLocation()" class="w-full px-4 py-3 rounded-xl bg-ozone-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-gold-royal transition-colors">
+                    <option value="PE">Pernambuco (Hub Nordeste / Polo Recife)</option>
+                    <option value="ES" selected>Espírito Santo (Polo Fabril Guarapari / CD Vitória)</option>
+                    <option value="SP">São Paulo (Mega CD Jardins / Campinas)</option>
+                    <option value="RJ">Rio de Janeiro (CD Barra da Tijuca)</option>
+                    <option value="MG">Minas Gerais (Hub Belo Horizonte Savassi)</option>
+                    <option value="PR">Paraná (Hub Curitiba Batel)</option>
+                    <option value="BA">Bahia (Hub Salvador Iguatemi)</option>
+                    <option value="DF">Distrito Federal (Hub Brasília Asa Sul)</option>
+                    <option value="RS">Rio Grande do Sul (Hub Porto Alegre)</option>
+                    <option value="OUTRO">Outros Estados (Rede Nacional com +300 CDs)</option>
+                  </select>
+                </div>
+                <div id="sim-cd-info" class="mt-2.5 p-3 rounded-xl bg-bio-glow/10 border border-bio-glow/20 flex items-center gap-2 text-xs text-slate-300 font-mono">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-bio-glow shrink-0"></i>
+                  <span id="sim-cd-text">CD Homologado com Pronta Entrega: Retirada imediata ou despacho em até 2h.</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Coluna Direita: Dashboard de Resultados & Chamada para Ação -->
+            <div class="lg:col-span-5 space-y-5">
+              
+              <div class="p-6 rounded-2xl bg-ozone-950/90 border border-gold-royal/30 space-y-5 shadow-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                  <div class="flex items-center gap-2">
+                    <i data-lucide="pie-chart" class="w-4 h-4 text-gold-royal"></i>
+                    <span class="font-display font-bold text-xs uppercase text-white tracking-wider">Metas de Movimentação</span>
+                  </div>
+                  <span class="text-[10px] font-mono text-bio-glow bg-bio-glow/15 px-2 py-0.5 rounded border border-bio-glow/30">100% Margem</span>
+                </div>
+
+                <!-- Métricas Calculadas -->
+                <div class="grid grid-cols-2 gap-3">
+                  
+                  <div class="p-3.5 rounded-xl bg-ozone-900/80 border border-slate-800">
+                    <span class="block text-[10px] font-mono text-slate-400 uppercase">Média Diária</span>
+                    <span id="sim-daily-units" class="font-display font-extrabold text-2xl text-white mt-0.5 block">
+                      1,8 <span class="text-xs font-mono text-slate-400 font-normal">frascos/dia</span>
+                    </span>
+                    <span class="text-[10px] text-bio-glow mt-1 block">Meta altamente alcançável</span>
+                  </div>
+
+                  <div class="p-3.5 rounded-xl bg-ozone-900/80 border border-slate-800">
+                    <span class="block text-[10px] font-mono text-slate-400 uppercase">Total no Mês</span>
+                    <span id="sim-monthly-units" class="font-display font-extrabold text-2xl text-gold-light mt-0.5 block">
+                      55 <span class="text-xs font-mono text-slate-400 font-normal">unidades</span>
+                    </span>
+                    <span class="text-[10px] text-slate-400 mt-1 block">Mix Sofh + Presidente</span>
+                  </div>
+
+                </div>
+
+                <!-- Demonstrativo Financeiro -->
+                <div class="space-y-2 pt-1 text-xs font-mono">
+                  <div class="flex justify-between text-slate-400">
+                    <span>Faturamento Estimado:</span>
+                    <span id="sim-gross-rev" class="text-white font-bold">R$ 10.000,00</span>
+                  </div>
+                  <div class="flex justify-between text-slate-400">
+                    <span>Custo de Atacado (50%):</span>
+                    <span id="sim-cost" class="text-slate-300">R$ 5.000,00</span>
+                  </div>
+                  <div class="pt-2 border-t border-slate-800 flex justify-between text-sm">
+                    <span class="font-bold text-gold-royal">Lucro Líquido no Seu Bolso:</span>
+                    <span id="sim-net-profit" class="font-extrabold text-bio-glow">R$ 5.000,00</span>
+                  </div>
+                </div>
+
+                <!-- Benefícios do Consultor Oficial -->
+                <div class="p-3.5 rounded-xl bg-ozone-900/50 border border-slate-800/80 space-y-1.5 text-[11px] text-slate-300">
+                  <div class="flex items-center gap-1.5 text-white font-semibold">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-bio-glow"></i>
+                    <span>Vantagens do Distribuidor Homologado:</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-slate-400">
+                    <span class="w-1 h-1 rounded-full bg-gold-royal"></span>
+                    <span>Mentoria 1-a-1 com o Consultor Antonio Gonçalo</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-slate-400">
+                    <span class="w-1 h-1 rounded-full bg-gold-royal"></span>
+                    <span>Acesso a materiais de divulgação, fotos e laudos oficiais</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-slate-400">
+                    <span class="w-1 h-1 rounded-full bg-gold-royal"></span>
+                    <span>Zero necessidade de estoque alto (uso dos 300 CDs)</span>
+                  </div>
+                </div>
+
+                <!-- Botão de Ação: Handover Direto para o WhatsApp de Antonio Gonçalo -->
+                <a id="btn-sim-whatsapp"
+                   href="#"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="w-full py-4 px-5 rounded-xl bg-gradient-to-r from-gold-royal via-gold-light to-gold-royal hover:opacity-95 text-ozone-950 font-display font-extrabold text-xs tracking-wider uppercase transition-all shadow-xl shadow-gold-royal/20 flex items-center justify-center gap-2 group cursor-pointer">
+                  <i data-lucide="send" class="w-4 h-4 text-ozone-950 group-hover:translate-x-0.5 transition-transform"></i>
+                  <span>Agendar Alinhamento com Antonio Gonçalo</span>
+                </a>
+
+                <p class="text-[10px] text-slate-500 text-center font-mono">
+                  Atendimento direto com o titular da distribuição · CNPJ 38.540.165/0001-29
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
     <!-- SEÇÃO DE DEPOIMENTOS EM GRADE DE 3 COLUNAS COM CARROSSEL INTERATIVO -->
     <section id="depoimentos" class="py-28 px-6 md:px-12 relative bg-ozone-950/80 overflow-hidden border-t border-b border-slate-800/60">
       
@@ -2204,7 +2430,7 @@
             </button>
             <div class="faq-panel px-6 pb-6 text-slate-300 text-sm leading-relaxed hidden space-y-2">
               <div class="p-3 rounded-xl bg-bio-glow/10 border border-bio-glow/20 text-bio-glow text-xs font-mono">
-                🛡️ <strong>Analogia do Selo Ouro:</strong> Tranquilidade total para a sua família!
+                🛡️ <strong>Garantia Biológica Oficial:</strong> Controle Analítico Lote a Lote e Padrão Farmacopeico
               </div>
               <p>
                 Sim! Todos os produtos cosméticos e de higiene do Grupo Ozonteck cumprem 100% das exigências sanitárias da Anvisa. São livres de substâncias tóxicas ou agressivas, possuem laudos laboratoriais físico-químicos rigorosos e são seguros para jovens, adultos e peles maduras.
@@ -2367,21 +2593,112 @@
     </div>
   </div>
 
-  <!-- FLOATING CONCIERGE WHATSAPP BADGE -->
-  <aside aria-label="Atendimento rápido" class="fixed bottom-6 right-6 z-40">
-    <a href="https://wa.me/5581997240477?text=Ol%C3%A1!%20Desejo%20uma%20Consultoria%20VIP%20com%20o%20Especialista%20Ozonteck."
-       target="_blank"
-       rel="noopener noreferrer"
-       class="relative group flex items-center gap-3 p-3.5 rounded-full bg-bio-glow text-ozone-950 shadow-2xl shadow-bio-glow/50 hover:scale-105 active:scale-95 transition-all duration-300">
-      <div class="relative">
-        <i data-lucide="message-circle" class="w-6 h-6 text-ozone-950"></i>
-        <span class="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-white animate-ping"></span>
+  <!-- WIDGET FLUTUANTE LIQUID GLASS: CONCIERGE DÉRMICO & OLFATIVO 24/7 (AGENTE 1) -->
+  <div id="concierge-widget-container" class="relative z-50">
+    
+    <!-- Botão Gatilho Flutuante -->
+    <button id="concierge-trigger-btn"
+            type="button"
+            onclick="toggleConciergeChat()"
+            title="Abrir Concierge Dérmico & Olfativo Ozonteck 24/7"
+            class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-full liquid-glass border border-bio-glow/50 text-white shadow-2xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer">
+      <div class="relative w-8 h-8 rounded-full bg-gradient-to-tr from-bio-glow to-cyan-300 flex items-center justify-center text-ozone-950 shadow-md">
+        <i data-lucide="sparkles" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
+        <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-ozone-950 animate-ping"></span>
+        <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-ozone-950"></span>
       </div>
-      <span class="hidden md:inline font-display font-bold text-xs uppercase tracking-wider pr-1 text-ozone-950">
-        Concierge Online
-      </span>
-    </a>
-  </aside>
+      <div class="text-left hidden sm:block pr-1">
+        <span class="block text-xs font-display font-bold text-white tracking-tight">Concierge IA 24/7</span>
+        <span class="block text-[10px] font-mono text-bio-glow">Consultor Online</span>
+      </div>
+    </button>
+
+    <!-- Painel de Chat Flutuante em Liquid Glass -->
+    <div id="concierge-chat-drawer" 
+         class="fixed bottom-6 right-6 z-50 w-[92vw] sm:w-[420px] max-h-[640px] h-[85vh] liquid-glass rounded-3xl border border-bio-glow/40 shadow-2xl flex flex-col overflow-hidden transition-all duration-300 transform scale-95 opacity-0 pointer-events-none origin-bottom-right">
+      
+      <!-- Header do Concierge -->
+      <div class="p-4 bg-ozone-950/90 border-b border-bio-glow/20 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="relative w-10 h-10 rounded-xl overflow-hidden border border-gold-royal/50 shadow-md shrink-0">
+            <img src="/FOTO1_EDITADA.png" 
+                 onerror="if (this.src.indexOf('antonio-goncalo.png') === -1) { this.src='/antonio-goncalo.png'; } else { this.src='/antonio-goncalo-senior.jpg'; }"
+                 alt="Antonio Gonçalo" 
+                 class="w-full h-full object-cover object-top">
+            <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-ozone-950"></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <h4 class="font-display font-bold text-sm text-white">Concierge Ozonteck</h4>
+              <span class="text-[9px] font-mono bg-bio-glow/20 text-bio-glow px-1.5 py-0.5 rounded font-bold">IA 24/7</span>
+            </div>
+            <p class="text-[11px] text-slate-400 font-mono">Embaixador Antonio Gonçalo</p>
+          </div>
+        </div>
+        <button type="button" 
+                onclick="toggleConciergeChat()"
+                title="Fechar Concierge"
+                class="w-8 h-8 rounded-lg bg-ozone-900 hover:bg-ozone-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Chips de Acesso Rápido (Sugestões de 1 Toque) -->
+      <div class="px-3.5 py-2.5 bg-ozone-900/70 border-b border-slate-800/80 flex items-center gap-1.5 overflow-x-auto text-[11px] shrink-0 no-scrollbar">
+        <button type="button" onclick="sendQuickPrompt('Qual protocolo recomenda para linhas de expressão e viço facial?')" class="px-2.5 py-1 rounded-full bg-ozone-950 border border-slate-700 hover:border-bio-glow text-slate-300 hover:text-white whitespace-nowrap transition-colors">
+          🌿 Linhas & Viço
+        </button>
+        <button type="button" onclick="sendQuickPrompt('Qual fragrância da linha Presidente projeta autoridade executiva?')" class="px-2.5 py-1 rounded-full bg-ozone-950 border border-slate-700 hover:border-gold-royal text-slate-300 hover:text-white whitespace-nowrap transition-colors">
+          👑 Perfume Presidente
+        </button>
+        <button type="button" onclick="sendQuickPrompt('Como funciona a margem de 100% para ser Distribuidor Autorizado?')" class="px-2.5 py-1 rounded-full bg-ozone-950 border border-slate-700 hover:border-gold-royal text-gold-light whitespace-nowrap transition-colors">
+          💼 Margem 100%
+        </button>
+        <button type="button" onclick="sendQuickPrompt('Como usar o Sabonete OX3 e Óleo Sofh na rotina noturna?')" class="px-2.5 py-1 rounded-full bg-ozone-950 border border-slate-700 hover:border-bio-glow text-slate-300 hover:text-white whitespace-nowrap transition-colors">
+          🫧 Ritual Diário
+        </button>
+      </div>
+
+      <!-- Área de Conversação com Scroll -->
+      <div id="concierge-chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs">
+        <!-- Mensagem Inicial de Boas-Vindas -->
+        <div class="flex items-start gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-bio-glow/20 border border-bio-glow/40 text-bio-glow flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="bot" class="w-4 h-4"></i>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-ozone-900/90 border border-bio-glow/20 text-slate-200 leading-relaxed max-w-[85%] shadow-md">
+            <p class="font-semibold text-white mb-1">Olá! Seja muito bem-vindo ao portal oficial.</p>
+            <p>Sou o <strong>Concierge Dérmico & Olfativo</strong> do Consultor Executivo Antonio Gonçalo. Posso orientar sua rotina de biotecnologia em ozonioterapia cosmética, indicar fragrâncias exclusivas ou tirar dúvidas sobre como lucrar como Distribuidor Autorizado.</p>
+            <p class="mt-2 text-[11px] text-bio-glow font-mono">Como posso auxiliar seu dia hoje?</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Bar de Mensagens -->
+      <div class="p-3 bg-ozone-950/95 border-t border-slate-800 shrink-0">
+        <form id="concierge-chat-form" onsubmit="handleConciergeSubmit(event)" class="flex items-center gap-2">
+          <input type="text" 
+                 id="concierge-chat-input" 
+                 placeholder="Digite sua dúvida ou queixa dérmica..." 
+                 class="flex-1 px-4 py-2.5 rounded-xl bg-ozone-900 border border-slate-700 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-bio-glow transition-colors">
+          <button type="submit" 
+                  id="concierge-send-btn"
+                  class="w-10 h-10 rounded-xl bg-bio-glow hover:bg-white text-ozone-950 flex items-center justify-center transition-all shadow-md shrink-0">
+            <i data-lucide="send" class="w-4 h-4 text-ozone-950"></i>
+          </button>
+        </form>
+        <div class="mt-1.5 flex items-center justify-between text-[10px] text-slate-500 font-mono px-1">
+          <span>Powered by Gemini 3.8 Flash</span>
+          <a href="https://wa.me/5581997240477" target="_blank" class="text-bio-glow hover:underline flex items-center gap-1">
+            <span>WhatsApp Direto</span>
+            <i data-lucide="arrow-up-right" class="w-2.5 h-2.5"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- JAVASCRIPT: LENIS, THREE.JS 3D SCENE, GSAP SCROLLTRIGGER, WEB AUDIO API, TILT -->
   <script>
@@ -4205,16 +4522,280 @@
       reader.readAsDataURL(file);
     }
 
+    /* -------------------------------------------------------------
+       15. SIMULADOR DE LUCRATIVIDADE & DISTRIBUIÇÃO (AGENTE 2)
+       ------------------------------------------------------------- */
+    let currentSimProfile = 'consultor';
+    const profileMultipliers = {
+      consultor: { name: 'Consultor Direto', avgUnitProfit: 60, badge: 'Margem: 100% Varejo Direto' },
+      clinica: { name: 'Clínica & Spa', avgUnitProfit: 75, badge: 'Margem: 100% + Cabine' },
+      lider: { name: 'Líder Regional', avgUnitProfit: 85, badge: 'Margem: 100% Atacado & Rede' }
+    };
+
+    function setSimProfile(profile) {
+      if (typeof playHapticTick === 'function') playHapticTick();
+      currentSimProfile = profile;
+      
+      const btnConsultor = document.getElementById('btn-sim-consultor');
+      const btnClinica = document.getElementById('btn-sim-clinica');
+      const btnLider = document.getElementById('btn-sim-lider');
+      const badge = document.getElementById('sim-profile-badge');
+
+      [btnConsultor, btnClinica, btnLider].forEach(b => {
+        if (!b) return;
+        b.className = 'p-3.5 rounded-xl border border-slate-700 hover:border-gold-royal/40 bg-ozone-950/80 text-slate-400 text-left transition-all';
+      });
+
+      const activeBtn = document.getElementById(`btn-sim-${profile}`);
+      if (activeBtn) {
+        activeBtn.className = 'p-3.5 rounded-xl border border-gold-royal/50 bg-gold-royal/20 text-gold-light text-left transition-all';
+      }
+
+      if (badge && profileMultipliers[profile]) {
+        badge.textContent = profileMultipliers[profile].badge;
+      }
+
+      updateProfitSimulation();
+    }
+
+    function updateProfitSimulation() {
+      const rangeEl = document.getElementById('sim-profit-range');
+      if (!rangeEl) return;
+
+      const targetProfit = parseInt(rangeEl.value, 10) || 5000;
+      const profile = profileMultipliers[currentSimProfile] || profileMultipliers.consultor;
+      
+      // Unidades no mês e média diária
+      const monthlyUnits = Math.max(1, Math.round(targetProfit / profile.avgUnitProfit));
+      const dailyUnits = (monthlyUnits / 30).toFixed(1);
+
+      // Demonstrativo de 100% de margem no atacado
+      const grossRev = targetProfit * 2;
+      const wholesaleCost = targetProfit;
+
+      const displayProfit = document.getElementById('sim-profit-display');
+      const displayDaily = document.getElementById('sim-daily-units');
+      const displayMonthly = document.getElementById('sim-monthly-units');
+      const displayGross = document.getElementById('sim-gross-rev');
+      const displayCost = document.getElementById('sim-cost');
+      const displayNet = document.getElementById('sim-net-profit');
+      const btnWhatsapp = document.getElementById('btn-sim-whatsapp');
+
+      if (displayProfit) displayProfit.textContent = targetProfit.toLocaleString('pt-BR');
+      if (displayDaily) displayDaily.innerHTML = `${dailyUnits.replace('.', ',')} <span class="text-xs font-mono text-slate-400 font-normal">frascos/dia</span>`;
+      if (displayMonthly) displayMonthly.innerHTML = `${monthlyUnits} <span class="text-xs font-mono text-slate-400 font-normal">unidades</span>`;
+      if (displayGross) displayGross.textContent = `R$ ${grossRev.toLocaleString('pt-BR')},00`;
+      if (displayCost) displayCost.textContent = `R$ ${wholesaleCost.toLocaleString('pt-BR')},00`;
+      if (displayNet) displayNet.textContent = `R$ ${targetProfit.toLocaleString('pt-BR')},00`;
+
+      // Atualização do link WhatsApp do Antonio Gonçalo
+      const stateEl = document.getElementById('sim-state-select');
+      const chosenState = stateEl ? stateEl.options[stateEl.selectedIndex].text : 'Brasil';
+
+      if (btnWhatsapp) {
+        const textMsg = `Olá Antonio Gonçalo! Gostaria de uma oportunidade como Distribuidor Autorizado Ozonteck.\n\n*Minha Simulação de Negócios:*\n• Modelo: ${profile.name}\n• Meta de Lucro Líquido: R$ ${targetProfit.toLocaleString('pt-BR')},00 / mês\n• Média de Vendas: Apenas ${dailyUnits.replace('.', ',')} unidades/dia (~${monthlyUnits} un/mês)\n• Polo Regional: ${chosenState}\n\nDesejo agendar meu alinhamento executivo e ativação de cadastro.`;
+        btnWhatsapp.href = `https://wa.me/5581997240477?text=${encodeURIComponent(textMsg)}`;
+      }
+    }
+
+    function updateSimCDLocation() {
+      if (typeof playHapticTick === 'function') playHapticTick();
+      const stateEl = document.getElementById('sim-state-select');
+      const cdInfoText = document.getElementById('sim-cd-text');
+      if (!stateEl || !cdInfoText) return;
+
+      const uf = stateEl.value;
+      if (uf === 'OUTRO') {
+        cdInfoText.textContent = 'Rede Nacional de +300 CDs: Atendimento prioritário e despacho para sua cidade.';
+      } else {
+        const match = typeof cdDatabase !== 'undefined' ? cdDatabase.find(c => c.uf === uf) : null;
+        if (match) {
+          cdInfoText.textContent = `${match.name} (${match.city}/${match.uf}) ativo: Pronta Entrega e retirada sem frete convencional!`;
+        } else {
+          cdInfoText.textContent = `Hub Regional ${uf} homologado: Pronta entrega com estoque ativo para distribuidores.`;
+        }
+      }
+
+      updateProfitSimulation();
+    }
+
+    /* -------------------------------------------------------------
+       16. CONCIERGE DÉRMICO & OLFATIVO 24/7 (AGENTE 1)
+       ------------------------------------------------------------- */
+    let isConciergeOpen = false;
+    let conciergeHistory = [];
+    let isConciergeSending = false;
+
+    function toggleConciergeChat() {
+      if (typeof playHapticTick === 'function') playHapticTick();
+      const drawer = document.getElementById('concierge-chat-drawer');
+      const trigger = document.getElementById('concierge-trigger-btn');
+      if (!drawer) return;
+
+      isConciergeOpen = !isConciergeOpen;
+
+      if (isConciergeOpen) {
+        drawer.classList.remove('scale-95', 'opacity-0', 'pointer-events-none');
+        drawer.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
+        if (trigger) trigger.classList.add('hidden');
+        const input = document.getElementById('concierge-chat-input');
+        if (input) setTimeout(() => input.focus(), 250);
+      } else {
+        drawer.classList.add('scale-95', 'opacity-0', 'pointer-events-none');
+        drawer.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+        if (trigger) trigger.classList.remove('hidden');
+      }
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function sendQuickPrompt(promptText) {
+      const input = document.getElementById('concierge-chat-input');
+      if (input) {
+        input.value = promptText;
+        handleConciergeSubmit();
+      }
+    }
+
+    async function handleConciergeSubmit(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (isConciergeSending) return;
+
+      const input = document.getElementById('concierge-chat-input');
+      if (!input) return;
+
+      const userText = input.value.trim();
+      if (!userText) return;
+
+      if (typeof playHapticTick === 'function') playHapticTick();
+      input.value = '';
+      isConciergeSending = true;
+
+      const messagesContainer = document.getElementById('concierge-chat-messages');
+
+      // 1. Injetar balão do usuário
+      appendConciergeMessage('user', userText);
+
+      // 2. Injetar indicador de digitação (typing loader)
+      const typingId = 'typing-' + Date.now();
+      const typingHtml = `
+        <div id="${typingId}" class="flex items-start gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-bio-glow/20 border border-bio-glow/40 text-bio-glow flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="bot" class="w-4 h-4"></i>
+          </div>
+          <div class="p-3 rounded-2xl bg-ozone-900 border border-bio-glow/20 flex items-center gap-1.5 shadow-md">
+            <span class="w-2 h-2 rounded-full bg-bio-glow animate-bounce" style="animation-delay: 0s;"></span>
+            <span class="w-2 h-2 rounded-full bg-bio-glow animate-bounce" style="animation-delay: 0.15s;"></span>
+            <span class="w-2 h-2 rounded-full bg-bio-glow animate-bounce" style="animation-delay: 0.3s;"></span>
+          </div>
+        </div>
+      `;
+      messagesContainer.insertAdjacentHTML('beforeend', typingHtml);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      if (window.lucide) lucide.createIcons();
+
+      try {
+        const response = await fetch('/api/chat-skin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: userText,
+            history: conciergeHistory
+          })
+        });
+
+        const data = await response.json();
+        const replyText = data.reply || 'Estou à disposição para orientar seus cuidados cosméticos com o ozônio ou seu credenciamento oficial com Antonio Gonçalo!';
+
+        // Remover indicador de digitação
+        const typingEl = document.getElementById(typingId);
+        if (typingEl) typingEl.remove();
+
+        // Salvar histórico multi-turn
+        conciergeHistory.push({ role: 'user', text: userText });
+        conciergeHistory.push({ role: 'model', text: replyText });
+
+        // 3. Injetar resposta da IA
+        appendConciergeMessage('model', replyText);
+
+      } catch (err) {
+        console.error('Erro ao comunicar com Concierge:', err);
+        const typingEl = document.getElementById(typingId);
+        if (typingEl) typingEl.remove();
+
+        const fallbackReply = 'Olá! O Consultor Executivo Antonio Gonçalo está disponível em tempo real para atendimento prioritário no WhatsApp (+55 81 99724-0477). Deseja conversar diretamente com ele?';
+        appendConciergeMessage('model', fallbackReply);
+      } finally {
+        isConciergeSending = false;
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function appendConciergeMessage(role, text) {
+      const messagesContainer = document.getElementById('concierge-chat-messages');
+      if (!messagesContainer) return;
+
+      const isUser = role === 'user';
+      const formattedText = text
+        .replace(/\n\n/g, '<br><br>')
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+      let actionButtonHtml = '';
+      // Se a IA citar produtos ou negócios, gerar botão direto para o WhatsApp do Antonio Gonçalo
+      if (!isUser) {
+        const whatsappMsg = `Olá Antonio Gonçalo! O Concierge da Ozonteck me recomendou este protocolo/orientação no site:\n\n"${text.substring(0, 180)}..."\n\nGostaria de fechar meu pedido com prioridade.`;
+        actionButtonHtml = `
+          <div class="mt-2.5 pt-2 border-t border-slate-800/80">
+            <a href="https://wa.me/5581997240477?text=${encodeURIComponent(whatsappMsg)}" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-bio-glow hover:bg-white text-ozone-950 font-display font-bold text-[11px] transition-all shadow-md">
+              <i data-lucide="message-square" class="w-3.5 h-3.5 text-ozone-950"></i>
+              <span>Pedir no WhatsApp de Antonio Gonçalo</span>
+            </a>
+          </div>
+        `;
+      }
+
+      const msgHtml = isUser ? `
+        <div class="flex justify-end">
+          <div class="p-3.5 rounded-2xl bg-bio-glow text-ozone-950 font-medium leading-relaxed max-w-[85%] shadow-md">
+            ${formattedText}
+          </div>
+        </div>
+      ` : `
+        <div class="flex items-start gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-bio-glow/20 border border-bio-glow/40 text-bio-glow flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="bot" class="w-4 h-4"></i>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-ozone-900/90 border border-bio-glow/20 text-slate-200 leading-relaxed max-w-[85%] shadow-md">
+            ${formattedText}
+            ${actionButtonHtml}
+          </div>
+        </div>
+      `;
+
+      messagesContainer.insertAdjacentHTML('beforeend', msgHtml);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      if (window.lucide) lucide.createIcons();
+    }
+
     // Inicialização da visualização de depoimentos e animações GSAP no carregamento
     document.addEventListener('DOMContentLoaded', () => {
       loadStoredOwnerPhoto();
       updateTestimonialsView();
       initGsapEntranceAnimations();
+      updateProfitSimulation();
+      updateSimCDLocation();
     });
     // Executa também imediatamente caso o DOM já esteja pronto
     loadStoredOwnerPhoto();
     updateTestimonialsView();
     initGsapEntranceAnimations();
+    updateProfitSimulation();
+    updateSimCDLocation();
   </script>
 </body>
 </html>

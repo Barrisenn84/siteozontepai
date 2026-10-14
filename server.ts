@@ -270,10 +270,10 @@ Retorne em formato JSON válido contendo exatamente a estrutura exigida.`;
   }
 });
 
-// Rota de Chat com Consultor Virtual Ozonteck (Liquid Glass Chat)
+// Rota de Chat com Consultor Virtual Ozonteck (Liquid Glass Concierge 24/7)
 app.post('/api/chat-skin', async (req, res) => {
   try {
-    const { message } = req.body;
+    const { message, history } = req.body;
     if (!message || typeof message !== 'string') {
       return res.status(400).json({ success: false, error: 'Mensagem inválida.' });
     }
@@ -282,29 +282,72 @@ app.post('/api/chat-skin', async (req, res) => {
       return res.json({
         success: true,
         reply:
-          'Olá! Sou o assistente executivo da Ozonteck. Nosso consultor executivo Antonio Gonçalo está disponível no WhatsApp (+55 81 99724-0477) para prestar consultoria personalizada com a linha completa de óleos ozonizados e alta perfumaria.',
+          'Olá! Sou o Concierge Executivo Ozonteck. Nosso Consultor Executivo Antonio Gonçalo está disponível no WhatsApp (+55 81 99724-0477) para montar seu protocolo dermo-cosmético sob medida ou alinhar seu plano de distribuição oficial.',
       });
     }
 
+    // Montar histórico de conversação multi-turn
+    const contents: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
+
+    if (Array.isArray(history) && history.length > 0) {
+      history.slice(-8).forEach((item: any) => {
+        if (item && item.role && item.text) {
+          contents.push({
+            role: item.role === 'user' ? 'user' : 'model',
+            parts: [{ text: String(item.text) }],
+          });
+        }
+      });
+    }
+
+    contents.push({
+      role: 'user',
+      parts: [{ text: message }],
+    });
+
+    const systemInstruction = `Você é o Concierge Dérmico & Olfativo 24/7 Oficial da Ozonteck Internacional, representando com autoridade científica, hospitalidade e prestígio o Consultor Executivo & Distribuidor Autorizado Antonio Gonçalo (CNPJ 38.540.165/0001-29 | WhatsApp: +55 81 99724-0477).
+
+SUA MISSÃO:
+Prestar consultoria personalizada e de alto padrão tanto para clientes finais em busca de saúde dérmica e perfumaria de nicho, quanto para empreendedores interessados na Distribuição Autorizada Ozonteck.
+
+PRODUTOS-CHAVE & PRESCRIÇÕES OFICIAIS:
+1. Óleo Sofh Ozonizado (30ml): Matriz botânica pura ozonizada (O3 ativo). Indicação: bioestimulação celular, restauração do manto hidrolipídico, linhas finas, manchas, cicatrização e viço dérmico profundo. Modo de uso: 3 a 5 gotas à noite em pele limpa.
+2. Sabonete Líquido OX3 (250ml): Assepsia profunda com pH fisiológico equilibrado, sem agredir o microbioma dérmico. Indicação: uso diário (manhã e noite) antes do Óleo Sofh.
+3. Perfume Presidente (100ml Eau de Parfum): Alta perfumaria executiva, maceração nobre prolongada, notas de madeiras nobres, couro artesanal e especiarias finas. Fixação de 12h a 16h com rastro marcante e sofisticado.
+4. NXCap Ozon Blend: Suplementação antioxidante e bio-oxigenação celular sistêmica.
+
+OPORTUNIDADE DE DISTRIBUIÇÃO & NEGÓCIOS:
+- Margem de lucro de até 100% no atacado.
+- Retirada expressa na malha de mais de 300 Centros de Distribuição (CDs) no Brasil (sem dependência exclusiva de correios).
+- Acompanhamento formativo via Ozon Academy e mentoria executiva direta com Antonio Gonçalo.
+
+DIRETRIZES DE RESPOSTA:
+1. Seja sempre elegante, empático, objetivo e técnico sem ser pedante. Evite qualquer tom infantil.
+2. Formate suas respostas com parágrafos bem espaçados ou tópicos fáceis de escanear visualmente.
+3. Se o usuário perguntar sobre a rotina da pele, recomende o protocolo específico (ex: OX3 + Sofh).
+4. Se o usuário perguntar sobre perfumes ou ocasiões, recomende a Linha Presidente detalhando a família olfativa.
+5. Se o usuário perguntar sobre lucros, negócios ou como ser distribuidor, explique a margem de 100%, a agilidade dos 300 CDs e convide-o a enviar a simulação para o WhatsApp do Antonio Gonçalo (+55 81 99724-0477).
+6. Conclua incentivando com naturalidade o contato com Antonio Gonçalo no WhatsApp para despacho prioritário ou liberação de cadastro.`;
+
     const response = await ai.models.generateContent({
       model: 'gemini-3.8-flash',
-      contents: message,
+      contents,
       config: {
-        systemInstruction:
-          'Você é o consultor de biotecnologia dérmica e ozonioterapia estética da Ozonteck Internacional, representando o consultor executivo Antonio Gonçalo. Seja acolhedor, profissional, elegante e didático. Explique os benefícios do ozônio vegetal puro (O3), óleos ozonizados Sofh, sabonete líquido OX3, NXCap e perfumaria executiva (Linha Presidente). Recomende sempre consultar o WhatsApp do consultor para fechar protocolos personalizados.',
+        systemInstruction,
       },
     });
 
     const reply =
       response?.text ||
-      'Estou à disposição para esclarecer qualquer dúvida sobre nossos produtos ozonizados!';
+      'Estou à disposição para esclarecer qualquer dúvida sobre nossos produtos ozonizados e oportunidades de distribuição executiva com Antonio Gonçalo!';
+
     return res.json({ success: true, reply });
   } catch (err: any) {
     console.error('Erro na rota /api/chat-skin:', err);
     return res.json({
       success: true,
       reply:
-        'Olá! Sou o assistente executivo Ozonteck. Para atendimento prioritário com Antonio Gonçalo, entre em contato via WhatsApp no topo da página!',
+        'Olá! Sou o Concierge Executivo Ozonteck. Nosso Consultor Executivo Antonio Gonçalo está disponível no WhatsApp (+55 81 99724-0477) para prestar consultoria personalizada com a linha completa de óleos ozonizados e perfumaria!',
     });
   }
 });
