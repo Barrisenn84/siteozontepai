@@ -271,6 +271,45 @@ Retorne em formato JSON válido contendo exatamente a estrutura exigida.`;
   }
 });
 
+// Rota de Chat com Consultor Virtual Ozonteck (Liquid Glass Chat)
+app.post('/api/chat-skin', async (req, res) => {
+  try {
+    const { message } = req.body;
+    if (!message || typeof message !== 'string') {
+      return res.status(400).json({ success: false, error: 'Mensagem inválida.' });
+    }
+
+    if (!process.env.GEMINI_API_KEY) {
+      return res.json({
+        success: true,
+        reply:
+          'Olá! Sou o assistente executivo da Ozonteck. Nosso consultor executivo Antonio Gonçalo está disponível no WhatsApp (+55 81 99724-0477) para prestar consultoria personalizada com a linha completa de óleos ozonizados e alta perfumaria.',
+      });
+    }
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-3.8-flash',
+      contents: message,
+      config: {
+        systemInstruction:
+          'Você é o consultor de biotecnologia dérmica e ozonioterapia estética da Ozonteck Internacional, representando o consultor executivo Antonio Gonçalo. Seja acolhedor, profissional, elegante e didático. Explique os benefícios do ozônio vegetal puro (O3), óleos ozonizados Sofh, sabonete líquido OX3, NXCap e perfumaria executiva (Linha Presidente). Recomende sempre consultar o WhatsApp do consultor para fechar protocolos personalizados.',
+      },
+    });
+
+    const reply =
+      response?.text ||
+      'Estou à disposição para esclarecer qualquer dúvida sobre nossos produtos ozonizados!';
+    return res.json({ success: true, reply });
+  } catch (err: any) {
+    console.error('Erro na rota /api/chat-skin:', err);
+    return res.json({
+      success: true,
+      reply:
+        'Olá! Sou o assistente executivo Ozonteck. Para atendimento prioritário com Antonio Gonçalo, entre em contato via WhatsApp no topo da página!',
+    });
+  }
+});
+
 // Rota para upload e persistência definitiva da foto oficial do dono (FOTO1_EDITADA.png)
 app.post('/api/upload-owner-photo', express.json({ limit: '25mb' }), (req, res) => {
   try {
