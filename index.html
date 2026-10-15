@@ -95,7 +95,7 @@
       width: 100vw;
       height: 100vh;
       pointer-events: none;
-      z-index: 999;
+      z-index: 1;
       opacity: 0.015;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
@@ -317,6 +317,11 @@
       will-change: transform;
     }
 
+    .tilt-card > *:not(.specular-glare) {
+      position: relative;
+      z-index: 20;
+    }
+
     .specular-glare {
       position: absolute;
       inset: 0;
@@ -480,8 +485,59 @@
             <i data-lucide="message-circle" class="w-3.5 h-3.5 text-ozone-950"></i>
             <span>Atendimento VIP</span>
           </a>
+
+          <!-- Botão Menu Mobile -->
+          <button id="mobile-menu-btn"
+                  type="button"
+                  onclick="toggleMobileMenu()"
+                  aria-label="Abrir Menu de Navegação"
+                  class="lg:hidden flex items-center justify-center w-9 h-9 rounded-xl glass-subtle border border-slate-700 hover:border-bio-glow/50 text-slate-300 hover:text-white transition-all cursor-pointer">
+            <i data-lucide="menu" id="mobile-menu-icon" class="w-4 h-4"></i>
+          </button>
         </div>
 
+      </div>
+
+      <!-- Drawer de Navegação Mobile (Liquid Glass) -->
+      <div id="mobile-nav-drawer" class="lg:hidden hidden max-w-7xl mx-auto mt-2 glass-ultra rounded-2xl p-5 border border-bio-glow/30 shadow-2xl transition-all duration-300">
+        <div class="flex flex-col gap-2.5 text-xs font-medium text-slate-300">
+          <a href="#hero" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80">
+            <i data-lucide="home" class="w-3.5 h-3.5 text-bio-glow"></i>
+            <span>Início</span>
+          </a>
+          <a href="#biotecnologia" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80">
+            <i data-lucide="atom" class="w-3.5 h-3.5 text-bio-glow"></i>
+            <span>Molécula O3</span>
+          </a>
+          <a href="#showroom" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80">
+            <i data-lucide="package" class="w-3.5 h-3.5 text-bio-glow"></i>
+            <span>Showroom VIP</span>
+          </a>
+          <a href="#representante" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80 text-bio-glow font-semibold">
+            <i data-lucide="user-check" class="w-3.5 h-3.5 text-gold-royal"></i>
+            <span>Representante Oficial Antonio Gonçalo</span>
+          </a>
+          <a href="#diagnostico" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80">
+            <i data-lucide="scan" class="w-3.5 h-3.5 text-bio-glow"></i>
+            <span>Diagnóstico Dérmico (Scanner IA)</span>
+          </a>
+          <a href="#localizador-cd" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-bio-glow"></i>
+            <span>Centros de Distribuição (+300 CDs)</span>
+          </a>
+          <a href="#simulador-lucro" onclick="closeMobileMenu()" class="text-gold-royal hover:text-gold-light transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80 font-bold">
+            <i data-lucide="calculator" class="w-3.5 h-3.5 text-gold-royal"></i>
+            <span>Simulador de Lucro (Até 100% Margem)</span>
+          </a>
+          <a href="#depoimentos" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5 border-b border-slate-800/80">
+            <i data-lucide="star" class="w-3.5 h-3.5 text-bio-glow"></i>
+            <span>Depoimentos Reais</span>
+          </a>
+          <a href="#faq" onclick="closeMobileMenu()" class="hover:text-bio-glow transition-colors py-2 flex items-center gap-2.5">
+            <i data-lucide="help-circle" class="w-3.5 h-3.5 text-bio-glow"></i>
+            <span>Perguntas Frequentes (FAQ)</span>
+          </a>
+        </div>
       </div>
     </header>
 
@@ -2516,7 +2572,7 @@
   </div>
 
   <!-- MODAL DE INSPEÇÃO 3D 360° INTERATIVA DO PRODUTO -->
-  <div id="inspect-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ozone-950/85 backdrop-blur-xl hidden opacity-0 transition-opacity duration-300">
+  <div id="inspect-modal" class="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-ozone-950/85 backdrop-blur-xl hidden opacity-0 transition-opacity duration-300">
     <div id="inspect-box" class="relative w-full max-w-2xl glass-ultra rounded-3xl p-6 sm:p-8 border border-bio-glow/40 shadow-2xl transform scale-95 transition-transform duration-300">
       
       <!-- Botão Fechar -->
@@ -2594,14 +2650,14 @@
   </div>
 
   <!-- WIDGET FLUTUANTE LIQUID GLASS: CONCIERGE DÉRMICO & OLFATIVO 24/7 (AGENTE 1) -->
-  <div id="concierge-widget-container" class="relative z-50">
+  <div id="concierge-widget-container" class="relative z-[60]">
     
     <!-- Botão Gatilho Flutuante -->
     <button id="concierge-trigger-btn"
             type="button"
             onclick="toggleConciergeChat()"
             title="Abrir Concierge Dérmico & Olfativo Ozonteck 24/7"
-            class="fixed bottom-6 right-6 z-50 px-4 py-3 rounded-full liquid-glass border border-bio-glow/50 text-white shadow-2xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer">
+            class="fixed bottom-6 right-6 z-[60] px-4 py-3 rounded-full liquid-glass border border-bio-glow/50 text-white shadow-2xl flex items-center gap-3 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer">
       <div class="relative w-8 h-8 rounded-full bg-gradient-to-tr from-bio-glow to-cyan-300 flex items-center justify-center text-ozone-950 shadow-md">
         <i data-lucide="sparkles" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
         <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-ozone-950 animate-ping"></span>
@@ -2615,7 +2671,7 @@
 
     <!-- Painel de Chat Flutuante em Liquid Glass -->
     <div id="concierge-chat-drawer" 
-         class="fixed bottom-6 right-6 z-50 w-[92vw] sm:w-[420px] max-h-[640px] h-[85vh] liquid-glass rounded-3xl border border-bio-glow/40 shadow-2xl flex flex-col overflow-hidden transition-all duration-300 transform scale-95 opacity-0 pointer-events-none origin-bottom-right">
+         class="fixed bottom-6 right-6 z-[60] w-[92vw] sm:w-[420px] max-h-[640px] h-[85vh] liquid-glass rounded-3xl border border-bio-glow/40 shadow-2xl flex flex-col overflow-hidden transition-all duration-300 transform scale-95 opacity-0 pointer-events-none origin-bottom-right">
       
       <!-- Header do Concierge -->
       <div class="p-4 bg-ozone-950/90 border-b border-bio-glow/20 flex items-center justify-between shrink-0">
@@ -4781,6 +4837,60 @@
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
       if (window.lucide) lucide.createIcons();
     }
+
+    /* -------------------------------------------------------------
+       17. MENU MOBILE INTERATIVO (DRAWER LIQUID GLASS)
+       ------------------------------------------------------------- */
+    function toggleMobileMenu() {
+      if (typeof playHapticTick === 'function') playHapticTick();
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (!drawer) return;
+      const isHidden = drawer.classList.contains('hidden');
+      if (isHidden) {
+        drawer.classList.remove('hidden');
+        if (icon) icon.setAttribute('data-lucide', 'x');
+      } else {
+        drawer.classList.add('hidden');
+        if (icon) icon.setAttribute('data-lucide', 'menu');
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const icon = document.getElementById('mobile-menu-icon');
+      if (drawer) drawer.classList.add('hidden');
+      if (icon) icon.setAttribute('data-lucide', 'menu');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    /* -------------------------------------------------------------
+       18. EXPOSIÇÃO GLOBAL EXPLÍCITA (GARANTIA TOTAL DE DISPONIBILIDADE)
+       ------------------------------------------------------------- */
+    window.openInspectModal = openInspectModal;
+    window.closeInspectModal = closeInspectModal;
+    window.setPyramidTab = setPyramidTab;
+    window.switchDiagMode = switchDiagMode;
+    window.triggerPhotoUpload = triggerPhotoUpload;
+    window.loadDemoPhoto = loadDemoPhoto;
+    window.executeAiSkinAnalysis = executeAiSkinAnalysis;
+    window.resetAiScanner = resetAiScanner;
+    window.selectQuizAnswer = selectQuizAnswer;
+    window.filterCDs = filterCDs;
+    window.filterCDsByState = filterCDsByState;
+    window.setSimProfile = setSimProfile;
+    window.updateProfitSimulation = updateProfitSimulation;
+    window.updateSimCDLocation = updateSimCDLocation;
+    window.toggleConciergeChat = toggleConciergeChat;
+    window.sendQuickPrompt = sendQuickPrompt;
+    window.handleConciergeSubmit = handleConciergeSubmit;
+    window.filterTestimonials = filterTestimonials;
+    window.navigateTestimonials = navigateTestimonials;
+    window.toggleSensoryAudio = toggleSensoryAudio;
+    window.playHapticTick = playHapticTick;
+    window.toggleMobileMenu = toggleMobileMenu;
+    window.closeMobileMenu = closeMobileMenu;
 
     // Inicialização da visualização de depoimentos e animações GSAP no carregamento
     document.addEventListener('DOMContentLoaded', () => {
